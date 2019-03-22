@@ -38,8 +38,8 @@ class Conferences extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['conf_name', 'conf_year', 'conf_start_date', 'conf_end_date', 'conf_abstract_DL', 'conf_poster_DL', 'conf_fullpaper_DL', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'required'],
-            [['conf_year', 'conf_start_date', 'conf_end_date', 'conf_abstract_DL', 'conf_poster_DL', 'conf_fullpaper_DL', 'created_at', 'updated_at'], 'safe'],
+            [['conf_name', 'conf_year', 'conf_start_date', 'conf_end_date', 'conf_abstract_DL', 'conf_poster_DL', 'conf_fullpaper_DL'], 'required'],
+            [['conf_year', 'conf_start_date', 'conf_end_date', 'conf_abstract_DL', 'conf_poster_DL', 'conf_fullpaper_DL', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
             [['conf_name'], 'string', 'max' => 512],
         ];

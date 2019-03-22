@@ -38,8 +38,8 @@ class Reviewers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['reviewer_name', 'reviewer_cnic', 'reviewer_designation', 'reviewer_email', 'reviewer_domain', 'reviewer_contact_no', 'reviewer_website', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['reviewer_name', 'reviewer_cnic', 'reviewer_designation', 'reviewer_email', 'reviewer_domain', 'reviewer_contact_no', 'reviewer_website'], 'required'],
+            [['created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
             [['reviewer_name'], 'string', 'max' => 256],
             [['reviewer_cnic', 'reviewer_contact_no'], 'string', 'max' => 15],

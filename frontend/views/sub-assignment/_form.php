@@ -11,24 +11,29 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'assign_sub_id')->textInput() ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'assign_sub_id')->textInput() ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'assign_reviewer_id')->textInput() ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'assign_reviewer_id')->textInput() ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'assign_deadline')->textInput() ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'assign_sub_status')->dropDownList([ 'Accepted' => 'Accepted', 'Rejected' => 'Rejected', ], ['prompt' => '']) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'assign_deadline')->textInput() ?>
-
-    <?= $form->field($model, 'assign_reviews')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'assign_sub_status')->dropDownList([ 'Accepted' => 'Accepted', 'Rejected' => 'Rejected', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
+    <div class="row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'assign_reviews')->textarea(['rows' => 6]) ?> 
+        </div>
+    </div>
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">

@@ -34,9 +34,9 @@ class PaperAuthors extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['pa_sub_id', 'pa_author_id', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'required'],
+            [['pa_sub_id', 'pa_author_id'], 'required'],
             [['pa_sub_id', 'pa_author_id', 'created_by', 'updated_by'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [[ 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
             [['pa_sub_id'], 'exist', 'skipOnError' => true, 'targetClass' => Submissions::className(), 'targetAttribute' => ['pa_sub_id' => 'sub_id']],
             [['pa_author_id'], 'exist', 'skipOnError' => true, 'targetClass' => Authors::className(), 'targetAttribute' => ['pa_author_id' => 'author_id']],
         ];

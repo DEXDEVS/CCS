@@ -11,28 +11,43 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'reviewer_name')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'reviewer_name')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'reviewer_cnic')->widget(yii\widgets\MaskedInput::class, [
+        'mask' => '99999-9999999-9',
+        ]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'reviewer_cnic')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'reviewer_designation')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'reviewer_email')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'reviewer_designation')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'reviewer_domain')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'reviewer_contact_no')->widget(yii\widgets\MaskedInput::class, [ 'mask' => '+99-999-9999999', ]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'reviewer_email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'reviewer_domain')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'reviewer_contact_no')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'reviewer_website')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'reviewer_website')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            
+        </div>
+    </div>
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">

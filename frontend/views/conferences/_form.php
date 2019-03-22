@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\datetimepicker\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Conferences */
@@ -11,28 +12,74 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'conf_name')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'conf_name')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            <label>Conference Year</label>
+            <?= DateTimePicker::widget([
+                'model' => $model,
+                'attribute' => 'conf_year',
+                'language' => 'en',
+                'size' => 'ms',
+                'clientOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy',
+                    'todayBtn' => true
+                ]
+            ]);?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'conf_year')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <label>Conference Start Date</label>
+            <?= DateTimePicker::widget([
+                'model' => $model,
+                'attribute' => 'conf_start_date',
+                'language' => 'en',
+                'size' => 'ms',
+                'clientOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd HH:ii:ss',
+                    'todayBtn' => true
+                ]
+            ]);?>
+        </div>
+        <div class="col-md-6">
+              <label>Conference End Date</label>
+            <?= DateTimePicker::widget([
+                'model' => $model,
+                'attribute' => 'conf_end_date',
+                'language' => 'en',
+                'size' => 'ms',
+                'clientOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd HH:ii:ss',
+                    'todayBtn' => true
+                ]
+            ]);?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'conf_start_date')->textInput() ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'conf_abstract_DL')->textInput() ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'conf_poster_DL')->textInput() ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'conf_end_date')->textInput() ?>
-
-    <?= $form->field($model, 'conf_abstract_DL')->textInput() ?>
-
-    <?= $form->field($model, 'conf_poster_DL')->textInput() ?>
-
-    <?= $form->field($model, 'conf_fullpaper_DL')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'conf_fullpaper_DL')->textInput() ?>
+        </div>
+        <div class="col-md-6">
+            
+        </div>
+    </div>
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">

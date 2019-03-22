@@ -39,10 +39,10 @@ class Submissions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['conf_id', 'sub_type', 'sub_title', 'sub_abstract', 'sub_keywords', 'sub_file', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'required'],
+            [['conf_id', 'sub_type', 'sub_title', 'sub_abstract', 'sub_keywords', 'sub_file'], 'required'],
             [['conf_id', 'created_by', 'updated_by'], 'integer'],
             [['sub_abstract'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
             [['sub_type', 'sub_keywords'], 'string', 'max' => 56],
             [['sub_title'], 'string', 'max' => 256],
             [['sub_file'], 'string', 'max' => 120],

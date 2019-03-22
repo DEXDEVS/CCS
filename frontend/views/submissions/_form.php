@@ -11,26 +11,35 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'conf_id')->textInput() ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'conf_id')->textInput() ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'sub_type')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'sub_type')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'sub_title')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'sub_file')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'sub_title')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'sub_keywords')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'sub_abstract')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'sub_keywords')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'sub_file')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
+    <div class="row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'sub_abstract')->textarea(['rows' => 6]) ?>
+        </div>
+    </div>
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">

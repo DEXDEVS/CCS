@@ -37,9 +37,9 @@ class SubAssignment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['assign_sub_id', 'assign_reviewer_id', 'assign_deadline', 'assign_reviews', 'assign_sub_status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'required'],
+            [['assign_sub_id', 'assign_reviewer_id', 'assign_deadline', 'assign_reviews', 'assign_sub_status'], 'required'],
             [['assign_sub_id', 'assign_reviewer_id', 'created_by', 'updated_by'], 'integer'],
-            [['assign_deadline', 'created_at', 'updated_at'], 'safe'],
+            [['assign_deadline','created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
             [['assign_reviews', 'assign_sub_status'], 'string'],
             [['assign_sub_id'], 'exist', 'skipOnError' => true, 'targetClass' => Submissions::className(), 'targetAttribute' => ['assign_sub_id' => 'sub_id']],
             [['assign_reviewer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reviewers::className(), 'targetAttribute' => ['assign_reviewer_id' => 'reviewer_id']],
