@@ -9,6 +9,7 @@ use yii\helpers\Html;
 ?>
 <div class="authors-create">
     <?= $this->render('_form', [
-        'model' => $model,
+        //'model' => $model,
+        'authors' => $authors,
     ]) ?>
 </div>

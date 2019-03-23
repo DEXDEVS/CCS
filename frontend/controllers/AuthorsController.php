@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
+use yii\base\Model;
 use frontend\models\Authors;
 use frontend\models\AuthorsSearch;
 use yii\web\Controller;
@@ -82,7 +83,19 @@ class AuthorsController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Authors();  
+        $authors = new Authors(); 
+
+
+        //Find out how many products have been submitted by the form
+        $count = count($request->post('Authors', []));
+
+        //Send at least one model to the form
+        $authors = [new Authors()];
+
+        //Create an array of the Authors submitted
+        for($i = 1; $i < $count; $i++) {
+            $authors[] = new Authors();
+        }
 
         if($request->isAjax){
             /*
@@ -93,18 +106,24 @@ class AuthorsController extends Controller
                 return [
                     'title'=> "Create new Authors",
                     'content'=>$this->renderAjax('create', [
-                        'model' => $model,
+                        'authors' => $authors,
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
-            }else if($model->load($request->post())){
-                $model->created_by = Yii::$app->user->identity->id; 
-                $model->created_at = new \yii\db\Expression('NOW()');
-                $model->updated_by = '0';
-                $model->updated_at = '0'; 
-                $model->save();
+            }else if(Model::loadMultiple($authors, $request->post()) && Model::validateMultiple($authors)){
+
+                foreach ($authors as $author) {
+                    $author->created_by = Yii::$app->user->identity->id; 
+                    $author->created_at = new \yii\db\Expression('NOW()');
+                    $author->updated_by = '0';
+                    $author->updated_at = '0'; 
+                    $author->save(false);
+                //Try to save the models. Validation is not needed as it's already been done.
+                //$product->save(false);
+
+            }
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Create new Authors",
@@ -117,7 +136,7 @@ class AuthorsController extends Controller
                 return [
                     'title'=> "Create new Authors",
                     'content'=>$this->renderAjax('create', [
-                        'model' => $model,
+                        'authors' => $authors,
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
@@ -128,11 +147,11 @@ class AuthorsController extends Controller
             /*
             *   Process for non-ajax request
             */
-            if ($model->load($request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->author_id]);
+            if ($authors->load($request->post()) && $authors->save()) {
+                return $this->redirect(['view', 'id' => $authors->author_id]);
             } else {
                 return $this->render('create', [
-                    'model' => $model,
+                    'authors' => $authors,
                 ]);
             }
         }
