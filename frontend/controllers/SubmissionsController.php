@@ -13,6 +13,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
+use yii\web\UploadedFile;
+
 
 /**
  * SubmissionsController implements the CRUD actions for Submissions model.
@@ -107,6 +109,14 @@ class SubmissionsController extends Controller
             }else if($model->load($request->post())){
                     $authors = Model::createMultiple(Authors::classname()); 
                     Model::loadMultiple($authors, Yii::$app->request->post());
+
+                    //get the instance of the upload file
+                    $imageName = $model->sub_title;
+                    $model->sub_file = UploadedFile::getInstance($model,'sub_file');
+                    $model->sub_file->saveAs('uploads/'.$imageName.'.'.$model->sub_file->extension);
+
+                    //save the path in the db column
+                    $model->sub_file = 'uploads/'.$imageName.'.'.$model->sub_file->extension;
                     $model->created_by = Yii::$app->user->identity->id; 
                     $model->created_at = new \yii\db\Expression('NOW()');
                     $model->updated_by = '0';

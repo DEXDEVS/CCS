@@ -10,10 +10,10 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
-        [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'sub_id',
-    ],
+    //     [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'sub_id',
+    // ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'conf_id',
@@ -26,14 +26,14 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'sub_title',
     ],
+    // [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'sub_abstract',
+    // ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'sub_abstract',
+        'attribute'=>'sub_keywords',
     ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'sub_keywords',
-    // ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'sub_file',
