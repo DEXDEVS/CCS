@@ -57,7 +57,7 @@ class Submissions extends \yii\db\ActiveRecord
     {
         return [
             'sub_id' => 'Sub ID',
-            'conf_id' => 'Conf ID',
+            'conf_id' => 'Conferences Name',
             'sub_type' => 'Sub Type',
             'sub_title' => 'Sub Title',
             'sub_abstract' => 'Sub Abstract',

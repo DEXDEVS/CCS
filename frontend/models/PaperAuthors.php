@@ -49,8 +49,8 @@ class PaperAuthors extends \yii\db\ActiveRecord
     {
         return [
             'pa_id' => 'Pa ID',
-            'pa_sub_id' => 'Pa Sub ID',
-            'pa_author_id' => 'Pa Author ID',
+            'pa_sub_id' => 'Submission Title',
+            'pa_author_id' => 'Author Name',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',

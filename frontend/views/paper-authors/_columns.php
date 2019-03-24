@@ -10,17 +10,19 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
-        [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'pa_id',
-    ],
+    //     [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'pa_id',
+    // ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'pa_sub_id',
+        'value'=>'paSub.sub_title',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'pa_author_id',
+        'value'=>'paAuthor.author_fname',
     ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',

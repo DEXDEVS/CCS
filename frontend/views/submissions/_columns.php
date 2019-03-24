@@ -10,13 +10,14 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
-        [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'sub_id',
-    ],
+    //     [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'sub_id',
+    // ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'conf_id',
+        'value'=>'conf.conf_name',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',

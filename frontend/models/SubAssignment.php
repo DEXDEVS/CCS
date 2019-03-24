@@ -53,8 +53,8 @@ class SubAssignment extends \yii\db\ActiveRecord
     {
         return [
             'assign_id' => 'Assign ID',
-            'assign_sub_id' => 'Assign Sub ID',
-            'assign_reviewer_id' => 'Assign Reviewer ID',
+            'assign_sub_id' => 'Submission Title',
+            'assign_reviewer_id' => 'Reviewer Name',
             'assign_deadline' => 'Assign Deadline',
             'assign_reviews' => 'Assign Reviews',
             'assign_sub_status' => 'Assign Sub Status',
