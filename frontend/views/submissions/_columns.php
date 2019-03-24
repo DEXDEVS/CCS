@@ -27,14 +27,14 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'sub_title',
     ],
+    // [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'sub_abstract',
+    // ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'sub_abstract',
+        'attribute'=>'sub_keywords',
     ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'sub_keywords',
-    // ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'sub_file',

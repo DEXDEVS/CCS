@@ -1,7 +1,10 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 use wbraganca\dynamicform\DynamicFormWidget;
+use frontend\models\Conferences;
+
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Submissions */
@@ -77,7 +80,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                         </div><!-- .row -->
                         <div class="row">
                             <div class="col-md-4">
-                                <?= $form->field($author, "[{$i}]author_corresponding")->textInput(['maxlength' => true]) ?>
+                                <?= $form->field($author, "[{$i}]author_corresponding")->checkbox(); ?>
                             </div>
                         </div>
                     </div>
@@ -88,10 +91,12 @@ use wbraganca\dynamicform\DynamicFormWidget;
             </div>
         </div>  
     </div>
-
+    <h3>Submissions</h3>
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'conf_id')->textInput() ?>
+            <?= $form->field($model, 'conf_id')->dropDownList(
+                    ArrayHelper::map(Conferences::find()->all(),'conf_id','conf_name'), ['prompt'=>'Select Conference']
+                )?>
         </div>
         <div class="col-md-6">
             <?= $form->field($model, 'sub_type')->textInput(['maxlength' => true]) ?>
@@ -99,11 +104,11 @@ use wbraganca\dynamicform\DynamicFormWidget;
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-9">
             <?= $form->field($model, 'sub_title')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-6">
-            <?= $form->field($model, 'sub_file')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'sub_file')->fileInput() ?>
         </div>
     </div>
 

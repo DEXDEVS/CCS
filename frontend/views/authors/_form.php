@@ -76,7 +76,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                         </div><!-- .row -->
                         <div class="row">
                             <div class="col-md-4">
-                                <?= $form->field($author, "[{$i}]author_corresponding")->textInput(['maxlength' => true]) ?>
+                                <?= $form->field($author, "[{$i}]author_corresponding")->checkbox(); ?>
                             </div>
                         </div>
                     </div>

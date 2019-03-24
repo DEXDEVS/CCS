@@ -46,6 +46,7 @@ class Submissions extends \yii\db\ActiveRecord
             [['sub_type', 'sub_keywords'], 'string', 'max' => 56],
             [['sub_title'], 'string', 'max' => 256],
             [['sub_file'], 'string', 'max' => 120],
+            [['sub_file'],'file','skipOnEmpty'=> true],
             [['conf_id'], 'exist', 'skipOnError' => true, 'targetClass' => Conferences::className(), 'targetAttribute' => ['conf_id' => 'conf_id']],
         ];
     }
