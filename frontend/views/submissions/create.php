@@ -10,5 +10,6 @@ use yii\helpers\Html;
 <div class="submissions-create">
     <?= $this->render('_form', [
         'model' => $model,
+        'authors' => $authors,
     ]) ?>
 </div>

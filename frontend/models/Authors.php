@@ -38,9 +38,9 @@ class Authors extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['author_fname', 'author_mname', 'author_lname', 'author_country', 'author_affiliation', 'author_email', 'author_corresponding'], 'required'],
+            [['author_fname', 'author_lname', 'author_country', 'author_affiliation', 'author_email', 'author_corresponding'], 'required'],
             [['author_corresponding', 'created_by', 'updated_by'], 'integer'],
-            [[ 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
+            [['author_mname' , 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
             [['author_fname', 'author_mname', 'author_lname'], 'string', 'max' => 25],
             [['author_country'], 'string', 'max' => 128],
             [['author_affiliation'], 'string', 'max' => 256],

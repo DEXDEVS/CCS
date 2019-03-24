@@ -5,6 +5,9 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Submissions;
 use frontend\models\SubmissionsSearch;
+use frontend\models\Model;
+use frontend\models\Authors;
+use frontend\models\PaperAuthors;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -83,6 +86,7 @@ class SubmissionsController extends Controller
     {
         $request = Yii::$app->request;
         $model = new Submissions();  
+        $authors = [new Authors];  
 
         if($request->isAjax){
             /*
@@ -94,17 +98,58 @@ class SubmissionsController extends Controller
                     'title'=> "Create new Submissions",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
+                        'authors'=>(empty($authors)) ? [new Authors] : $authors,
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
             }else if($model->load($request->post())){
-                $model->created_by = Yii::$app->user->identity->id; 
-                $model->created_at = new \yii\db\Expression('NOW()');
-                $model->updated_by = '0';
-                $model->updated_at = '0'; 
-                $model->save();
+                    $authors = Model::createMultiple(Authors::classname()); 
+                    Model::loadMultiple($authors, Yii::$app->request->post());
+                    $model->created_by = Yii::$app->user->identity->id; 
+                    $model->created_at = new \yii\db\Expression('NOW()');
+                    $model->updated_by = '0';
+                    $model->updated_at = '0'; 
+
+                    // validate all models
+                    $valid = $model->validate();
+                    $valid = Model::validateMultiple($authors) && $valid;
+                    
+                    if ($valid) {
+                        $transaction = \Yii::$app->db->beginTransaction();
+                        try {
+                            if ($flag = $model->save(false)) {
+                                foreach ($authors as $author) {
+                                    $author->created_by = Yii::$app->user->identity->id; 
+                                    $author->created_at = new \yii\db\Expression('NOW()');
+                                    $author->updated_by = '0';
+                                    $author->updated_at = '0'; 
+                                    $author->save(false);
+                                    
+                                    $paperAuthors = new PaperAuthors();
+                                    $paperAuthors->pa_sub_id = $model->sub_id;
+                                    $paperAuthors->pa_author_id = $author->author_id;
+                                    $paperAuthors->created_by = Yii::$app->user->identity->id; 
+                                    $paperAuthors->created_at = new \yii\db\Expression('NOW()');
+                                    $paperAuthors->updated_by = '0';
+                                    $paperAuthors->updated_at = '0'; 
+                                    $paperAuthors->save(false);
+
+                                    if (! ($flag = $paperAuthors->save(false))) {
+                                        $transaction->rollBack();
+                                        break;
+                                    }
+                                }
+                            }
+                            if ($flag) {
+                                $transaction->commit();
+                                return $this->redirect(['index']);
+                            }
+                        } catch (Exception $e) {
+                            $transaction->rollBack();
+                        }
+                    }
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Create new Submissions",
