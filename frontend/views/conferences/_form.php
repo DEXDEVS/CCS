@@ -65,19 +65,49 @@ use dosamigos\datetimepicker\DateTimePicker;
 
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'conf_abstract_DL')->textInput() ?>
+            <label>Abstract DeadLine</label>
+            <?= DateTimePicker::widget([
+                'model' => $model,
+                'attribute' => 'conf_abstract_DL',
+                'language' => 'en',
+                'size' => 'ms',
+                'clientOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd HH:ii:ss',
+                    'todayBtn' => true
+                ]
+            ]);?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'conf_poster_DL')->textInput() ?>
+            <label>Poster DeadLine</label>
+            <?= DateTimePicker::widget([
+                'model' => $model,
+                'attribute' => 'conf_poster_DL',
+                'language' => 'en',
+                'size' => 'ms',
+                'clientOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd HH:ii:ss',
+                    'todayBtn' => true
+                ]
+            ]);?>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <?= $form->field($model, 'conf_fullpaper_DL')->textInput() ?>
-        </div>
-        <div class="col-md-6">
-            
+        <div class="col-md-6">            
+            <label>FullPaper DeadLine</label>
+            <?= DateTimePicker::widget([
+                'model' => $model,
+                'attribute' => 'conf_fullpaper_DL',
+                'language' => 'en',
+                'size' => 'ms',
+                'clientOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd HH:ii:ss',
+                    'todayBtn' => true
+                ]
+            ]);?>
         </div>
     </div>
   

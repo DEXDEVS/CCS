@@ -100,11 +100,28 @@ class SubAssignmentController extends Controller
         
                 ];         
             }else if($model->load($request->post())){
-                $model->created_by = Yii::$app->user->identity->id; 
-                $model->created_at = new \yii\db\Expression('NOW()');
-                $model->updated_by = '0';
-                $model->updated_at = '0'; 
-                $model->save();
+
+                    $arraySubIds = $model->assign_sub_id;
+                    $arrayReviewerIds = $model->assign_reviewer_id;
+                    $assignDeadline = $model->assign_deadline;
+
+                    foreach ($arrayReviewerIds as  $valu) {
+                        foreach ($arraySubIds as  $value) {
+                            $model = new SubAssignment();
+                            $model->assign_sub_id = $value;
+                            $model->assign_reviewer_id = $valu;
+                            $model->assign_deadline = $assignDeadline;
+
+                            // created and updated values...
+                            $model->created_by = Yii::$app->user->identity->id; 
+                            $model->created_at = new \yii\db\Expression('NOW()');
+                            $model->updated_by = '0';
+                            $model->updated_at = '0';
+                            $model->save(false);
+                        }
+                    }
+                    // select2 add multiple students end...! 
+                
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Create new SubAssignment",

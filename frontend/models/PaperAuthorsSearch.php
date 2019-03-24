@@ -18,8 +18,8 @@ class PaperAuthorsSearch extends PaperAuthors
     public function rules()
     {
         return [
-            [['pa_id', 'pa_sub_id', 'pa_author_id', 'created_by', 'updated_by'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['pa_id', 'created_by', 'updated_by'], 'integer'],
+            [['created_at', 'updated_at', 'pa_sub_id', 'pa_author_id'], 'safe'],
         ];
     }
 
@@ -54,16 +54,19 @@ class PaperAuthorsSearch extends PaperAuthors
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->joinWith('paSub');
+        $query->joinWith('paAuthor');
         $query->andFilterWhere([
             'pa_id' => $this->pa_id,
-            'pa_sub_id' => $this->pa_sub_id,
-            'pa_author_id' => $this->pa_author_id,
+            // 'pa_sub_id' => $this->pa_sub_id,
+            // 'pa_author_id' => $this->pa_author_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
         ]);
+        $query->andFilterWhere(['like', 'submissions.sub_title', $this->pa_sub_id])
+            ->andFilterWhere(['like', 'authors.author_fname', $this->pa_author_id]);
 
         return $dataProvider;
     }

@@ -28,10 +28,10 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'assign_deadline',
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'assign_reviews',
-    ],
+    // [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'assign_reviews',
+    // ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'assign_sub_status',

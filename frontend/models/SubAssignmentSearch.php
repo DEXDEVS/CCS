@@ -18,8 +18,8 @@ class SubAssignmentSearch extends SubAssignment
     public function rules()
     {
         return [
-            [['assign_id', 'assign_sub_id', 'assign_reviewer_id', 'created_by', 'updated_by'], 'integer'],
-            [['assign_deadline', 'assign_reviews', 'assign_sub_status', 'created_at', 'updated_at'], 'safe'],
+            [['assign_id', 'created_by', 'updated_by'], 'integer'],
+            [['assign_deadline', 'assign_reviews', 'assign_sub_status', 'created_at', 'updated_at', 'assign_sub_id', 'assign_reviewer_id'], 'safe'],
         ];
     }
 
@@ -54,11 +54,12 @@ class SubAssignmentSearch extends SubAssignment
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->joinWith('assignSub');
+        $query->joinWith('assignReviewer');
         $query->andFilterWhere([
             'assign_id' => $this->assign_id,
-            'assign_sub_id' => $this->assign_sub_id,
-            'assign_reviewer_id' => $this->assign_reviewer_id,
+            // 'assign_sub_id' => $this->assign_sub_id,
+            // 'assign_reviewer_id' => $this->assign_reviewer_id,
             'assign_deadline' => $this->assign_deadline,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
@@ -67,7 +68,9 @@ class SubAssignmentSearch extends SubAssignment
         ]);
 
         $query->andFilterWhere(['like', 'assign_reviews', $this->assign_reviews])
-            ->andFilterWhere(['like', 'assign_sub_status', $this->assign_sub_status]);
+            ->andFilterWhere(['like', 'assign_sub_status', $this->assign_sub_status])
+            ->andFilterWhere(['like', 'submissions.sub_title', $this->assign_sub_id])
+            ->andFilterWhere(['like', 'reviewers.reviewer_name', $this->assign_reviewer_id]);
 
         return $dataProvider;
     }
