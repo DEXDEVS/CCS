@@ -105,8 +105,6 @@ class AuthorsController extends Controller
             }else if(Model::createMultiple(Authors::classname()) && Model::loadMultiple($authors, Yii::$app->request->post())){
                 $authors = Model::createMultiple(Authors::classname()); 
                 Model::loadMultiple($authors, Yii::$app->request->post());
-                
-                if (is_array($authors)) {
         
                 // validate all models
                // $valid = Model::validateMultiple($authors);
@@ -133,10 +131,6 @@ class AuthorsController extends Controller
                     } catch (Exception $e) {
                         $transaction->rollBack();
                     }
-                } else{
-                            echo "not array";
-                            var_dump($authors);
-                        } 
                 //}
                 return [
                     'forceReload'=>'#crud-datatable-pjax',

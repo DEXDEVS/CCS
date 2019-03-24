@@ -4,6 +4,8 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Conferences;
+use frontend\models\Model;
+use frontend\models\Authors;
 use frontend\models\ConferencesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -83,6 +85,7 @@ class ConferencesController extends Controller
     {
         $request = Yii::$app->request;
         $model = new Conferences();  
+        $authors = [new Authors];
 
         if($request->isAjax){
             /*
