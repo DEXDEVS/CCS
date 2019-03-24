@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use yii\base\Model;
+use frontend\models\Model;
 use frontend\models\Authors;
 use frontend\models\AuthorsSearch;
 use yii\web\Controller;
@@ -83,19 +83,8 @@ class AuthorsController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $authors = new Authors(); 
-
-
-        //Find out how many products have been submitted by the form
-        $count = count($request->post('Authors', []));
-
-        //Send at least one model to the form
-        $authors = [new Authors()];
-
-        //Create an array of the Authors submitted
-        for($i = 1; $i < $count; $i++) {
-            $authors[] = new Authors();
-        }
+        //$authors = new Authors(); 
+        $authors = [new Authors];
 
         if($request->isAjax){
             /*
@@ -106,24 +95,49 @@ class AuthorsController extends Controller
                 return [
                     'title'=> "Create new Authors",
                     'content'=>$this->renderAjax('create', [
-                        'authors' => $authors,
+                        //'authors' => $authors,
+                        'authors'=>(empty($authors)) ? [new Authors] : $authors
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
-            }else if(Model::loadMultiple($authors, $request->post()) && Model::validateMultiple($authors)){
-
-                foreach ($authors as $author) {
-                    $author->created_by = Yii::$app->user->identity->id; 
-                    $author->created_at = new \yii\db\Expression('NOW()');
-                    $author->updated_by = '0';
-                    $author->updated_at = '0'; 
-                    $author->save(false);
-                //Try to save the models. Validation is not needed as it's already been done.
-                //$product->save(false);
-
-            }
+            }else if(Model::createMultiple(Authors::classname()) && Model::loadMultiple($authors, Yii::$app->request->post())){
+                $authors = Model::createMultiple(Authors::classname()); 
+                Model::loadMultiple($authors, Yii::$app->request->post());
+                
+                if (is_array($authors)) {
+        
+                // validate all models
+               // $valid = Model::validateMultiple($authors);
+                
+                //if ($valid) {
+                    $transaction = \Yii::$app->db->beginTransaction();
+                    try {
+                        
+                            foreach ($authors as $author) {
+                                    //$author->created_by = Yii::$app->user->identity->id; 
+                                    $author->created_at = new \yii\db\Expression('NOW()');
+                                    $author->updated_by = '0';
+                                    $author->updated_at = '0'; 
+                                if (! ($flag = $author->save(false))) {
+                                    $transaction->rollBack();
+                                    break;
+                                }
+                            }
+                       
+                            if ($flag) {
+                                $transaction->commit();
+                                return $this->redirect(['index']);
+                            }
+                    } catch (Exception $e) {
+                        $transaction->rollBack();
+                    }
+                } else{
+                            echo "not array";
+                            var_dump($authors);
+                        } 
+                //}
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Create new Authors",
