@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Submissions;
 
 /**
  * Site controller
@@ -34,7 +35,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout','paper-details'],
+                        'actions' => ['logout','paper-details', 'download-doc'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -44,9 +45,19 @@ class SiteController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                    'download-doc' => ['post'],
                 ],
             ],
         ];
+    }
+
+    // download documents.....
+    public function actionDownloadDoc($sub_id)
+    {
+        $model = Submissions::findOne($sub_id);
+        header('Content-Type:'.pathinfo($model->sub_file, PATHINFO_EXTENSION));
+        header('Content-Disposition: uploads; filename='.$model->sub_file);
+        return readfile($model->sub_file);
     }
 
     /**
