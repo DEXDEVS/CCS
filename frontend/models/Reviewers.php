@@ -45,6 +45,7 @@ class Reviewers extends \yii\db\ActiveRecord
             [['reviewer_cnic', 'reviewer_contact_no'], 'string', 'max' => 15],
             [['reviewer_designation', 'reviewer_domain', 'reviewer_website'], 'string', 'max' => 56],
             [['reviewer_email'], 'string', 'max' => 64],
+            ['reviewer_email', 'email'],
         ];
     }
 

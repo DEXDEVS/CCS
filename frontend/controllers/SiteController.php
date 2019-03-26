@@ -88,7 +88,19 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            $email = Yii::$app->user->identity->email;
+            $domain = substr($email, strpos($email, '@')+1);
+            if($email == 'admin@dskdconf.org'){
+                return $this->goBack();
+            } else {
+                if($domain == 'dskdconf.org'){
+                    return $this->redirect(['reviews']);
+                } else {
+                    return $this->redirect(['contact']);
+                }
+            }
+            
+            
         } else {
             $model->password = '';
 
@@ -138,9 +150,9 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
+    public function actionReviews()
     {
-        return $this->render('about');
+        return $this->render('reviews');
     }
 
     /**

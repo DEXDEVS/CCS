@@ -45,6 +45,7 @@ class Authors extends \yii\db\ActiveRecord
             [['author_country'], 'string', 'max' => 128],
             [['author_affiliation'], 'string', 'max' => 256],
             [['author_email'], 'string', 'max' => 56],
+            ['author_email', 'email'],
         ];
     }
 
