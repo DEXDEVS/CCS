@@ -21,10 +21,10 @@ $this->params['breadcrumbs'][] = $this->title;
  ?>
 <div class="container-fluid">
 	 <div class="row">
-	 	<div class="col-md-8">
+	 	<div class="col-md-12">
 	 		<div class="panel panel-default">
 			 	<div class="panel-heading">
-			 		<h3>Details</h3>
+			 		<h3 style="text-align: center;font-family:georgis"><i class="glyphicon glyphicon-cog"></i> Publication Details</h3>
 			 	</div>
 			 	<div class="panel-body">
 			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Conference Name</p>
@@ -32,37 +32,39 @@ $this->params['breadcrumbs'][] = $this->title;
 			 			<?php echo $confDetails[0]['conf_name']; ?>
 			 		</li><br>
 
-			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Sub Title</p>
+			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Title</p>
 			 		<li style="list-style-type: none;">
 			 			<?php echo $paperDetails[0]['sub_title']; ?>
 			 		</li><br>
 
-			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Sub Type</p>
+			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Submission Type</p>
 			 		<li style="list-style-type: none;">
 			 			<?php echo $paperDetails[0]['sub_type']; ?>
 			 		</li><br>
 
-			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Sub Abstract</p>
+			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Abstract</p>
 			 		<li style="list-style-type: none;">
 			 			<?php echo $paperDetails[0]['sub_abstract']; ?>
 			 		</li><br>
 
-			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Sub Keywords</p>
+			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Keywords</p>
 			 		<li style="list-style-type: none;">
 			 			<?php echo $paperDetails[0]['sub_keywords']; ?>
 			 		</li><br>
 
-			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i> Sub File</p>
-			 		<li style="list-style-type: none;">
-			 			<?= Html::a('<span class = ""></span> Click here to download file', ['site/download-doc', 'sub_id' => $paperDetails[0]['sub_id']], ['class' => '', 'title' => 'Download Document', 'data' => ['method' => 'post']]) ?>
+			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i>File</p>
+			 		<li style="list-style-type: none;font-size:15px;">
+			 			<?= Html::a(' Click here to download file <span class ="glyphicon glyphicon glyphicon-save-file"></span>', ['site/download-doc', 'sub_id' => $paperDetails[0]['sub_id']], ['class' => 'fa fa-user', 'title' => 'Download Document', 'data' => ['method' => 'post']]) ?>
 			 		</li><br>
 			 	</div>
 	 		</div>
 	 	</div>
-	 	<div class="col-md-4">
-	 		<div class="panel panel-primary">
+	 </div>
+	 <div class="row">
+	 	<div class="col-md-12">
+	 		<div class="panel panel-default">
 			 	<div class="panel-heading">
-			 		<h3 style="text-align: center;font-family: georgia;">For Acceptance</h3>
+			 		<h3 style="margin:0 auto;text-align:center;font-family: georgia;background-color:#337AB7;width:200px;color:white;padding:10px;">For Acceptance</h3>
 			 	</div>
 			 	<div class="panel-body">
 			 		<form method="post">
