@@ -220,7 +220,7 @@ class SiteController extends Controller
     {
         try {
             $model = new ResetPasswordForm($token);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidParamException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
 
