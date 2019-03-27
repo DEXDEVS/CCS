@@ -22,6 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
                 <?= $form->field($model, 'email') ?>
+                <?php  
+                    if(!empty(Yii::$app->user->identity->email)){
+                    $email = Yii::$app->user->identity->email;
+                    $domain = substr($email, strpos($email, '@')+1);
+                    if($domain == 'dskdconf.org'){ ?>
+                <?= $form->field($model, 'usertype')->dropDownList([ 'Reviewer' => 'Reviewer' ], ['prompt' => 'User Type']) ?>
+                <?php }  }?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 

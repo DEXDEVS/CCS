@@ -35,7 +35,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout','paper-details', 'download-doc'],
+                        'actions' => ['logout','paper-details', 'download-doc','signup'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -99,27 +99,14 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $email = Yii::$app->user->identity->email;
-            $domain = substr($email, strpos($email, '@')+1);
-            if($email == 'admin@dskdconf.org'){
-                return $this->goBack();
-            } else {
-                if($domain == 'dskdconf.org'){
-                    return $this->redirect(['reviews']);
-                } else {
-                    return $this->redirect(['contact']);
-                }
-            }
-            
-            
+            return $this->goBack();
         } else {
-            $model->password = '';
-
             return $this->render('login', [
                 'model' => $model,
             ]);
         }
     }
+
 
     /**
      * Logs out the current user.
@@ -181,7 +168,14 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
+                if(!empty(Yii::$app->user->identity->email)){
+                    $email = Yii::$app->user->identity->email;
+                    $domain = substr($email, strpos($email, '@')+1);
+                    if($domain == 'dskdconf.org'){
+                        return $this->goBack();
+                    }
+                } else {
+                    Yii::$app->getUser()->login($user);
                     return $this->goHome();
                 }
             }

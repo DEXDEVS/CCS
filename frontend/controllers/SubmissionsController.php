@@ -111,7 +111,7 @@ class SubmissionsController extends Controller
                     Model::loadMultiple($authors, Yii::$app->request->post());
 
                     //get the instance of the upload file
-                    $imageName = $model->sub_title;
+                    $imageName = $model->sub_type.'-'.$model->sub_title;
                     $model->sub_file = UploadedFile::getInstance($model,'sub_file');
                     $model->sub_file->saveAs('uploads/'.$imageName.'.'.$model->sub_file->extension);
 
