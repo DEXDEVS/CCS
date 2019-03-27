@@ -8,6 +8,7 @@ use frontend\models\PaperAuthorsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use \yii\web\Response;
 use yii\helpers\Html;
 
@@ -23,6 +24,20 @@ class PaperAuthorsController extends Controller
     {
         return [
             'verbs' => [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout', 'index', 'create', 'view', 'update', 'delete', 'bulk-delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
