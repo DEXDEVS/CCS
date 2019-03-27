@@ -11,7 +11,7 @@ $this->title = 'My Yii Application';
 
         <p class="lead">You are few steps away from submitting your publication.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://localhost/CCS/frontend/web/index.php?r=site%2Fsignup">Get started with CCS</a></p>
+        <p><a class="btn btn-success" href="http://localhost/CCS/frontend/web/index.php?r=site%2Fsignup">Get started with CCS</a></p>
     </div>
 
     <div class="body-content">

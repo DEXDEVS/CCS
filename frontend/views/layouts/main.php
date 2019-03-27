@@ -154,7 +154,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; CCS <?= date('Y') ?></p>
 
-        <p class="pull-right">Powered by <a href="dexdevs.com">DEXDEVS</a></p>
+        <p class="pull-right">Powered by <a href="http://www.dexdevs.com" target="_blank"><b><i>DEXDEVS</i></b></a></p>
     </div>
 </footer>
 
