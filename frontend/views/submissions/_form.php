@@ -99,7 +99,7 @@ use frontend\models\Conferences;
                 )?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'sub_type')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'sub_type')->dropDownList([ 'Abstract' => 'Abstract', 'Full Paper' => 'Full Paper', 'Poster Paper' => 'Poster Paper', ], ['prompt' => 'Submission Type']) ?>
         </div>
     </div>
 
