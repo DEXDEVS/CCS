@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 			 		<p style="font-weight: bolder;color:#337AB7;font-size:20px;"><i class="glyphicon glyphicon-circle-arrow-right"></i>File</p>
 			 		<li style="list-style-type: none;font-size:15px;">
-			 			<?= Html::a(' Click here to download file <span class ="glyphicon glyphicon glyphicon-save-file"></span>', ['site/download-doc', 'sub_id' => $paperDetails[0]['sub_id']], ['class' => 'fa fa-user', 'title' => 'Download Document', 'data' => ['method' => 'post']]) ?>
+			 			<?= Html::a('<span class ="glyphicon glyphicon glyphicon-save-file" style="font-size: 100px; color: #CCCCCC;"></span>', ['site/download-doc', 'sub_id' => $paperDetails[0]['sub_id']], ['class' => 'fa fa-user', 'title' => 'Click here to download paper', 'data' => ['method' => 'post']]) ?>
 			 		</li><br>
 			 	</div>
 	 		</div>
