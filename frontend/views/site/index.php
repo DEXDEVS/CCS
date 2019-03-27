@@ -25,7 +25,7 @@ $this->title = 'My Yii Application';
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="#">CCS Documentation &raquo;</a></p>
+                <p><a class="btn btn-default" href="index.php?r=site/documentation">CCS Documentation &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>How it works?</h2>

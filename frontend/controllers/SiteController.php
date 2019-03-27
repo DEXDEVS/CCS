@@ -35,7 +35,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                    'actions' => ['logout','reviews','contact', 'paper-details', 'download-doc','signup'],
+                    'actions' => ['logout','reviews','contact', 'paper-details', 'download-doc','signup','documentation'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -156,6 +156,11 @@ class SiteController extends Controller
     public function actionPaperDetails($id)
     {
         return $this->render('paper-details');
+    }
+
+    public function actionDocumentation()
+    {
+        return $this->render('documentation');
     }
 
     /**
