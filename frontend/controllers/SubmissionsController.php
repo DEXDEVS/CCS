@@ -36,7 +36,7 @@ class SubmissionsController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'create', 'view', 'update', 'delete', 'bulk-delete'],
+                        'actions' => ['logout', 'index', 'create', 'view', 'update', 'delete', 'bulk-delete','search-conference'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -99,7 +99,7 @@ class SubmissionsController extends Controller
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $request = Yii::$app->request;
         $model = new Submissions();  
@@ -198,11 +198,64 @@ class SubmissionsController extends Controller
             /*
             *   Process for non-ajax request
             */
-            if ($model->load($request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->sub_id]);
+            if($model->load($request->post())){
+                    $authors = Model::createMultiple(Authors::classname()); 
+                    Model::loadMultiple($authors, Yii::$app->request->post());
+
+                    //get the instance of the upload file
+                    $imageName = $model->sub_type.'-'.$model->sub_title;
+                    $model->sub_file = UploadedFile::getInstance($model,'sub_file');
+                    $model->sub_file->saveAs('uploads/'.$imageName.'.'.$model->sub_file->extension);
+
+                    //save the path in the db column
+                    $model->sub_file = 'uploads/'.$imageName.'.'.$model->sub_file->extension;
+                    $model->created_by = Yii::$app->user->identity->id; 
+                    $model->created_at = new \yii\db\Expression('NOW()');
+                    $model->updated_by = '0';
+                    $model->updated_at = '0'; 
+
+                    // validate all models
+                    $valid = $model->validate();
+                    $valid = Model::validateMultiple($authors) && $valid;
+                    
+                    if ($valid) {
+                        $transaction = \Yii::$app->db->beginTransaction();
+                        try {
+                            if ($flag = $model->save(false)) {
+                                foreach ($authors as $author) {
+                                    $author->created_by = Yii::$app->user->identity->id; 
+                                    $author->created_at = new \yii\db\Expression('NOW()');
+                                    $author->updated_by = '0';
+                                    $author->updated_at = '0'; 
+                                    $author->save(false);
+                                    
+                                    $paperAuthors = new PaperAuthors();
+                                    $paperAuthors->pa_sub_id = $model->sub_id;
+                                    $paperAuthors->pa_author_id = $author->author_id;
+                                    $paperAuthors->created_by = Yii::$app->user->identity->id; 
+                                    $paperAuthors->created_at = new \yii\db\Expression('NOW()');
+                                    $paperAuthors->updated_by = '0';
+                                    $paperAuthors->updated_at = '0'; 
+                                    $paperAuthors->save(false);
+
+                                    if (! ($flag = $paperAuthors->save(false))) {
+                                        $transaction->rollBack();
+                                        break;
+                                    }
+                                }
+                            }
+                            if ($flag) {
+                                $transaction->commit();
+                                return $this->redirect(['index']);
+                            }
+                        } catch (Exception $e) {
+                            $transaction->rollBack();
+                        }
+                    }
             } else {
                 return $this->render('create', [
                     'model' => $model,
+                    'authors'=>(empty($authors)) ? [new Authors] : $authors,
                 ]);
             }
         }
@@ -309,6 +362,15 @@ class SubmissionsController extends Controller
      * @param integer $id
      * @return mixed
      */
+
+    public function actionSearchConference()
+    {   
+        $model = new Submissions(); 
+        //return $this->render('search-conference');
+        return $this->render('search-conference', [
+                    'model' => $model,
+        ]);
+    }
     public function actionBulkDelete()
     {        
         $request = Yii::$app->request;

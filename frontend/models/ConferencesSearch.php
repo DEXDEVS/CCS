@@ -19,7 +19,7 @@ class ConferencesSearch extends Conferences
     {
         return [
             [['conf_id', 'created_by', 'updated_by'], 'integer'],
-            [['conf_name', 'conf_year', 'conf_start_date', 'conf_end_date', 'conf_abstract_DL', 'conf_poster_DL', 'conf_fullpaper_DL', 'created_at', 'updated_at'], 'safe'],
+            [['conf_name', 'conf_year', 'conf_venue', 'conf_start_date', 'conf_end_date', 'conf_abstract_DL', 'conf_poster_DL', 'conf_fullpaper_DL', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -69,7 +69,8 @@ class ConferencesSearch extends Conferences
             'updated_by' => $this->updated_by,
         ]);
 
-        $query->andFilterWhere(['like', 'conf_name', $this->conf_name]);
+        $query->andFilterWhere(['like', 'conf_name', $this->conf_name])
+            ->andFilterWhere(['like', 'conf_venue', $this->conf_venue]);
 
         return $dataProvider;
     }

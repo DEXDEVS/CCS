@@ -13,6 +13,7 @@ use yii\widgets\DetailView;
             'conf_id',
             'conf_name',
             'conf_year',
+            'conf_venue',
             'conf_start_date',
             'conf_end_date',
             'conf_abstract_DL',

@@ -7,15 +7,16 @@ use dosamigos\datetimepicker\DateTimePicker;
 /* @var $model frontend\models\Conferences */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
 <div class="conferences-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <?= $form->field($model, 'conf_name')->textInput(['maxlength' => true]) ?>
-        </div>
+        </div>    
+    </div>
+    <div class="row">
         <div class="col-md-6">
             <label>Conference Year</label>
             <?= DateTimePicker::widget([
@@ -29,9 +30,11 @@ use dosamigos\datetimepicker\DateTimePicker;
                     'todayBtn' => true
                 ]
             ]);?>
-        </div>
+        </div>    
+        <div class="col-md-6">
+            <?= $form->field($model, 'conf_venue')->textInput(['maxlength' => true]) ?>
+        </div>  
     </div>
-
     <div class="row">
         <div class="col-md-6">
             <label>Conference Start Date</label>
@@ -111,12 +114,13 @@ use dosamigos\datetimepicker\DateTimePicker;
         </div>
     </div>
   
-	<?php if (!Yii::$app->request->isAjax){ ?>
-	  	<div class="form-group">
-	        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	    </div>
-	<?php } ?>
+    <?php if (!Yii::$app->request->isAjax){ ?>
+        <div class="form-group">
+            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        </div>
+    <?php } ?>
 
     <?php ActiveForm::end(); ?>
     
 </div>
+

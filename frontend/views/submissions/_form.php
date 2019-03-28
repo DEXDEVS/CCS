@@ -10,7 +10,35 @@ use frontend\models\Conferences;
 /* @var $model frontend\models\Submissions */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
+<?php 
+    $id = $_GET['id'];
+    $conference = Yii::$app->db->createCommand("SELECT * FROM conferences WHERE conf_id = $id")->queryAll();
+    $startDate = date("d-M-Y", strtotime($conference[0]['conf_start_date']));
+    $endDate = date("d-M-Y", strtotime($conference[0]['conf_end_date']));
+?>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>Conference Detail</h3>
+            <div class="row">
+                <div class="col-md-8">
+                    <b><?php echo $conference[0]['conf_name'];?> </b>
+                </div>
+                <br>
+                <div class="col-md-4">
+                    <?php echo "Year: ".$conference[0]['conf_year'];?>
+                </div>
+                <br>
+                <div class="col-md-4">
+                    <?php echo "From: ".$startDate." To: ".$endDate;?>
+                </div>
+                <br>
+                <div class="col-md-4">
+                    <?php echo "Venue: ".$conference[0]['conf_venue'];?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="submissions-form">
 
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
@@ -44,7 +72,7 @@ use frontend\models\Conferences;
             <?php foreach ($authors as $i => $author): ?>
                 <div class="item panel panel-default"><!-- widgetBody -->
                     <div class="panel-heading">
-                        <h3 class="panel-title pull-left">Author <?php echo $i+1; ?></h3>
+                        <h3 class="panel-title pull-left">Author</h3>
                         <div class="pull-right">
                             <button type="button" class="add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                             <button type="button" class="remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>

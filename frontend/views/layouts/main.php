@@ -119,7 +119,7 @@ AppAsset::register($this);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
-                ['label' => 'Submissions', 'url' => ['/submissions']],
+                ['label' => 'Submissions', 'url' => ['/submissions/search-conference']],
                 
             ];
             $menuItems[] = '<li>'
