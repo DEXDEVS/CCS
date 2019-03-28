@@ -10,7 +10,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
     <?php $userId = Yii::$app->user->identity->id; ?>
-   	<div class="container">
+    <br>
+   	<div class="">
    		<div class="row">
    			<div class="col-md-12">
    				<table class="table table-hover">
@@ -18,6 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
    						<?php
    							$submissions = Yii::$app->db->createCommand("SELECT * FROM submissions WHERE created_by = '$userId'")->queryAll();
    							$count = count($submissions);
+                        if ($count == 0) {?>
+                             <div class="row">
+                                <div class="col-md-6 col-md-offset-3 well well-sm text-center">
+                                   <p>Sorry...!!! No previous submissions available</p>
+                                </div>
+                             </div>
+                       <?php }
    							for ($i=0; $i < $count ; $i++) { ?>
    						<tr>
    							<td>

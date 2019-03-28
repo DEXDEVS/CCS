@@ -23,6 +23,13 @@ $this->params['breadcrumbs'][] = $this->title;
    						<?php 
    						$assignPaperIds = Yii::$app->db->createCommand("SELECT assign_sub_id,assign_deadline FROM sub_assignment WHERE assign_reviewer_id = '$reviewerId'")->queryAll();
    						$count = count($assignPaperIds);
+                     if ($count == 0) {?>
+                             <div class="row">
+                                <div class="col-md-6 col-md-offset-3 well well-sm text-center">
+                                   <p>Sorry...!!! Papers are not assigned</p>
+                                </div>
+                             </div>
+                       <?php }
    						for ($i=0; $i <$count ; $i++) { 
    							$paperId = $assignPaperIds[$i]['assign_sub_id'];
    							$assignPaperName = Yii::$app->db->createCommand("SELECT sub_title,sub_keywords FROM submissions WHERE sub_id = '$paperId'")->queryAll(); ?>
