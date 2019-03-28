@@ -125,7 +125,7 @@ use frontend\models\Conferences;
             <?= $form->field($model, 'conf_id')->dropDownList(
                     ArrayHelper::map(Conferences::find()->all(),'conf_id','conf_name'), ['prompt'=>'Select Conference']
                 )?>
-        </div>
+        </div> 
         <div class="col-md-6">
             <?= $form->field($model, 'sub_type')->dropDownList([ 'Abstract' => 'Abstract', 'Full Paper' => 'Full Paper', 'Poster Paper' => 'Poster Paper', ], ['prompt' => 'Submission Type']) ?>
         </div>

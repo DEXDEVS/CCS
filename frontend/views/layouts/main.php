@@ -120,13 +120,8 @@ AppAsset::register($this);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
-<<<<<<< HEAD
                 ['label' => 'Submissions', 'url' => ['/submissions/search-conference']],
-=======
                 ['label' => 'Previous Submissions', 'url' => ['/submissions/previous-submission']],
-                ['label' => 'Submissions', 'url' => ['/submissions']],
->>>>>>> 77f45a3a2b2823d5e8d9f1286af85ec6d5d1668f
-                
             ];
             $menuItems[] = '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
