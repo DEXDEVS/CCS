@@ -36,7 +36,7 @@ class SubmissionsController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'create', 'view', 'update', 'delete', 'bulk-delete'],
+                        'actions' => ['logout', 'index', 'create', 'view', 'update', 'delete', 'bulk-delete','previous-submission','submission-details'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -52,6 +52,18 @@ class SubmissionsController extends Controller
         ];
     }
 
+
+
+
+    public function actionPreviousSubmission()
+    {
+        return $this->render('previous-submission');
+    }
+
+    public function actionSubmissionDetails($id)
+    {
+        return $this->render('submission-details');
+    }
     /**
      * Lists all Submissions models.
      * @return mixed

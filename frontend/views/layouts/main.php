@@ -120,6 +120,7 @@ AppAsset::register($this);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
+                ['label' => 'Previous Submissions', 'url' => ['/submissions/previous-submission']],
                 ['label' => 'Submissions', 'url' => ['/submissions']],
                 
             ];
