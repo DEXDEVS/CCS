@@ -35,7 +35,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                    'actions' => ['logout','reviews','contact', 'paper-details', 'download-doc','signup'],
+                    'actions' => ['logout','reviews','contact', 'paper-details', 'download-doc','signup','documentation'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -158,6 +158,11 @@ class SiteController extends Controller
         return $this->render('paper-details');
     }
 
+    public function actionDocumentation()
+    {
+        return $this->render('documentation');
+    }
+
     /**
      * Signs user up.
      *
@@ -220,7 +225,7 @@ class SiteController extends Controller
     {
         try {
             $model = new ResetPasswordForm($token);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidParamException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
 

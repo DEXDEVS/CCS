@@ -21,6 +21,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link rel="shortcut icon" href="uploads/CCS_logo.jpg" type="image/jpg">
     <?php $this->head() ?>
 </head>
 <body>
@@ -119,7 +120,12 @@ AppAsset::register($this);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
+<<<<<<< HEAD
                 ['label' => 'Submissions', 'url' => ['/submissions/search-conference']],
+=======
+                ['label' => 'Previous Submissions', 'url' => ['/submissions/previous-submission']],
+                ['label' => 'Submissions', 'url' => ['/submissions']],
+>>>>>>> 77f45a3a2b2823d5e8d9f1286af85ec6d5d1668f
                 
             ];
             $menuItems[] = '<li>'
@@ -153,7 +159,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; CCS <?= date('Y') ?></p>
 
-        <p class="pull-right">Powered by <a href="dexdevs.com">DEXDEVS</a></p>
+        <p class="pull-right">Powered by <a href="http://www.dexdevs.com" target="_blank"><b><i>DEXDEVS</i></b></a></p>
     </div>
 </footer>
 
