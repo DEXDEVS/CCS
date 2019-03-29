@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php 
    	$reviewerEmail = Yii::$app->user->identity->email;
    	$Id = Yii::$app->db->createCommand("SELECT reviewer_id FROM reviewers WHERE reviewer_email = '$reviewerEmail'")->queryAll();
+    $reviewerId = $Id[0]['reviewer_id'];
    	?>
    	<div class="container">
    		<div class="row">
@@ -20,16 +21,15 @@ $this->params['breadcrumbs'][] = $this->title;
    				<table class="table table-hover">
    					<tbody>
    						<?php 
-                     if (empty($Id)) {?>
-                             <div class="row">
+                      $assignPaperIds = Yii::$app->db->createCommand("SELECT assign_sub_id FROM sub_assignment WHERE assign_reviewer_id = '$reviewerId'")->queryAll();
+                          $count = count($assignPaperIds);
+                          if($count == 0){ ?>
+                            <div class="row">
                                 <div class="col-md-6 col-md-offset-3 well well-sm text-center">
                                    <p>Sorry...!!! Papers are not assigned</p>
                                 </div>
-                             </div>
-                       <?php } else {
-                       $reviewerId = $Id[0]['reviewer_id'];
-                       $assignPaperIds = Yii::$app->db->createCommand("SELECT assign_sub_id FROM sub_assignment WHERE assign_reviewer_id = '$reviewerId'")->queryAll();
-                          $count = count($assignPaperIds);
+                            </div>
+                          <?php  }
                						for ($i=0; $i <$count ; $i++) { 
                							$paperId = $assignPaperIds[$i]['assign_sub_id'];
                							$assignPaperName = Yii::$app->db->createCommand("SELECT s.sub_title,s.sub_keywords ,a.assign_deadline,a.status , a.assign_sub_status FROM submissions as s INNER JOIN sub_assignment as a ON s.sub_id = a.assign_sub_id WHERE s.sub_id = '$paperId'")->queryAll(); ?>
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                   } ?>
                							</td>
                						</tr>
-   						<?php } } ?>
+   						<?php }  ?>
    					</tbody>
    				</table>
    				

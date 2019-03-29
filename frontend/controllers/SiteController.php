@@ -13,6 +13,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Submissions;
+use frontend\models\Reviewers;
 
 /**
  * Site controller
@@ -177,8 +178,15 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
+        $reviewers = new Reviewers();  
+        if ($model->load(Yii::$app->request->post()) && $reviewers->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
+                $reviewers->reviewer_email = $user->email;
+                $reviewers->created_by = Yii::$app->user->identity->id; 
+                $reviewers->created_at = new \yii\db\Expression('NOW()');
+                $reviewers->updated_by = '0';
+                $reviewers->updated_at = '0'; 
+                $reviewers->save();
                 if(!empty(Yii::$app->user->identity->email)){
                     $email = Yii::$app->user->identity->email;
                     $domain = substr($email, strpos($email, '@')+1);
@@ -194,6 +202,7 @@ class SiteController extends Controller
 
         return $this->render('signup', [
             'model' => $model,
+            'reviewers'=> $reviewers,
         ]);
     }
 
