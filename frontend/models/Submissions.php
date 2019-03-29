@@ -44,7 +44,7 @@ class Submissions extends \yii\db\ActiveRecord
             [['conf_id', 'sub_type', 'sub_title', 'sub_abstract', 'sub_keywords', 'sub_file'], 'required'],
             [['conf_id', 'created_by', 'updated_by','search_conference'], 'integer'],
             [['sub_abstract'], 'string'],
-            [['created_at', 'updated_at', 'created_by', 'updated_by','search_conference'], 'safe'],
+            [['conf_id','created_at', 'updated_at', 'created_by', 'updated_by','search_conference'], 'safe'],
             [['sub_type', 'sub_keywords'], 'string', 'max' => 56],
             [['sub_title'], 'string', 'max' => 256],
             [['sub_file'], 'string', 'max' => 120],

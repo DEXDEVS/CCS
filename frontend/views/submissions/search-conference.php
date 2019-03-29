@@ -26,10 +26,6 @@ use kartik\select2\Select2;
                 ])->label('<h1 class="text-primary">Search Conference</h1>');
             ?>
         </div>
-        <div class="col-md-1" style="margin-top: 255px;">
-        	<?= Html::a('<i class="glyphicon glyphicon-plus"></i>', ['submissions/create'],
-                    ['role'=>'modal-remote','title'=> 'Create new Sub Assignments','class'=>'btn btn-success','id'=>'btn']) ?>
-        </div>
 
 	<?php ActiveForm::end(); ?>
     

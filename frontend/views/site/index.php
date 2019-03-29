@@ -5,7 +5,11 @@
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
-
+<?php 
+    if(Yii::$app->session->hasFlash('success')){
+        echo Yii::$app->session->getFlash('success',"message");
+    }
+?>
     <div class="jumbotron">
         <h1>Congratulations!</h1>
 

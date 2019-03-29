@@ -181,7 +181,8 @@ class SubmissionsController extends Controller
                             }
                             if ($flag) {
                                 $transaction->commit();
-                                return $this->redirect(['index']);
+                                echo $id;
+                                return $this->redirect(['create']);
                             }
                         } catch (Exception $e) {
                             $transaction->rollBack();
@@ -214,6 +215,7 @@ class SubmissionsController extends Controller
                     $authors = Model::createMultiple(Authors::classname()); 
                     Model::loadMultiple($authors, Yii::$app->request->post());
 
+                    $model->conf_id = $id;
                     //get the instance of the upload file
                     $imageName = $model->sub_type.'-'.$model->sub_title;
                     $model->sub_file = UploadedFile::getInstance($model,'sub_file');
@@ -258,7 +260,8 @@ class SubmissionsController extends Controller
                             }
                             if ($flag) {
                                 $transaction->commit();
-                                return $this->redirect(['index']);
+                                return $this->goHome();
+                                Yii::$app->session->setFlash('success',"Submissions Uploaded Successfull.");
                             }
                         } catch (Exception $e) {
                             $transaction->rollBack();

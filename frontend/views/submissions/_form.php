@@ -45,7 +45,7 @@ use frontend\models\Conferences;
 
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading"><h4><i class="glyphicon glyphicon-envelope"></i> Authors</h4></div>
+            <div class="panel-heading"><h4><i class="glyphicon glyphicon-user"></i>  Authors</h4></div>
             <div class="panel-body">
             <?php DynamicFormWidget::begin([
                 'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
@@ -119,43 +119,40 @@ use frontend\models\Conferences;
             </div>
         </div>  
     </div>
-    <h3>Submissions</h3>
     <div class="row">
-        <div class="col-md-6">
-            <?= $form->field($model, 'conf_id')->dropDownList(
-                    ArrayHelper::map(Conferences::find()->all(),'conf_id','conf_name'), ['prompt'=>'Select Conference']
-                )?>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4><i class="glyphicon glyphicon-envelope"></i> Submissions</h4></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <?= $form->field($model, 'sub_type')->dropDownList([ 'Abstract' => 'Abstract', 'Full Paper' => 'Full Paper', 'Poster Paper' => 'Poster Paper', ], ['prompt' => 'Submission Type']) ?>
+                    </div>
+                     <div class="col-md-8">
+                        <?= $form->field($model, 'sub_title')->textInput(['maxlength' => true]) ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <?= $form->field($model, 'sub_file')->fileInput() ?>
+                    </div>
+                    <div class="col-md-8">
+                        <?= $form->field($model, 'sub_keywords')->textInput(['maxlength' => true]) ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="padding-bottom: -10px;">
+                        <?= $form->field($model, 'sub_abstract')->textarea(['rows' => 6]) ?>
+                    </div>
+                </div>
+            </div>  
+            </div> 
         </div> 
-        <div class="col-md-6">
-            <?= $form->field($model, 'sub_type')->dropDownList([ 'Abstract' => 'Abstract', 'Full Paper' => 'Full Paper', 'Poster Paper' => 'Poster Paper', ], ['prompt' => 'Submission Type']) ?>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-9">
-            <?= $form->field($model, 'sub_title')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-md-3">
-            <?= $form->field($model, 'sub_file')->fileInput() ?>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <?= $form->field($model, 'sub_keywords')->textInput(['maxlength' => true]) ?>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <?= $form->field($model, 'sub_abstract')->textarea(['rows' => 6]) ?>
-        </div>
-    </div>
+    </div>       
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
-	  	<div class="form-group">
-	        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	    </div>
+        <div class="form-group ">
+            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        </div>
 	<?php } ?>
 
     <?php ActiveForm::end(); ?>
