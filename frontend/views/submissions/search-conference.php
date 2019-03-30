@@ -37,7 +37,7 @@ $script = <<< JS
 
 $('#search').change(function(){
     var search = $('#search').val();
-    window.location.href = "http://localhost/CCS/frontend/web/index.php?r=submissions/create&id="+search;
+    window.location.href = "index.php?r=submissions/create&id="+search;
 });
 JS;
 $this->registerJs($script);
