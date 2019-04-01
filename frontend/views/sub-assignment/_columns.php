@@ -36,6 +36,10 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'assign_sub_status',
     // ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'status',
+    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'created_at',

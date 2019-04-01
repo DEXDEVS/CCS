@@ -16,6 +16,7 @@ use yii\widgets\DetailView;
             'assign_deadline',
             'assign_reviews:ntext',
             'assign_sub_status',
+            'status',
             'created_at',
             'updated_at',
             'created_by',

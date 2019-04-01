@@ -18,7 +18,7 @@ use dosamigos\datetimepicker\DateTimePicker;
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label>Conference Year</label>
+            <label>Year</label>
             <?= DateTimePicker::widget([
                 'model' => $model,
                 'attribute' => 'conf_year',
@@ -37,7 +37,7 @@ use dosamigos\datetimepicker\DateTimePicker;
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label>Conference Start Date</label>
+            <label>Start Date</label>
             <?= DateTimePicker::widget([
                 'model' => $model,
                 'attribute' => 'conf_start_date',
@@ -51,7 +51,7 @@ use dosamigos\datetimepicker\DateTimePicker;
             ]);?>
         </div>
         <div class="col-md-6">
-              <label>Conference End Date</label>
+              <label>End Date</label>
             <?= DateTimePicker::widget([
                 'model' => $model,
                 'attribute' => 'conf_end_date',

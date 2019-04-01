@@ -62,7 +62,7 @@ class Authors extends \yii\db\ActiveRecord
             'author_country' => 'Country',
             'author_affiliation' => 'Affiliation',
             'author_email' => 'Email',
-            'author_corresponding' => 'Corresponding',
+            'author_corresponding' => 'Corresponding Author',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',

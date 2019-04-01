@@ -13,6 +13,7 @@ use Yii;
  * @property string $assign_deadline
  * @property string $assign_reviews
  * @property string $assign_sub_status
+ * @property string $status
  * @property string $created_at
  * @property string $updated_at
  * @property int $created_by
@@ -39,7 +40,7 @@ class SubAssignment extends \yii\db\ActiveRecord
         return [
             [['assign_sub_id', 'assign_reviewer_id', 'assign_deadline'], 'required'],
             [['assign_sub_id', 'assign_reviewer_id', 'created_by', 'updated_by'], 'integer'],
-            [['assign_deadline','created_at', 'updated_at', 'created_by', 'updated_by', 'assign_reviews', 'assign_sub_status'], 'safe'],
+            [['assign_deadline','created_at', 'updated_at', 'created_by', 'updated_by', 'assign_reviews', 'assign_sub_status' ,'status'], 'safe'],
             [['assign_reviews', 'assign_sub_status'], 'string'],
             [['assign_sub_id'], 'exist', 'skipOnError' => true, 'targetClass' => Submissions::className(), 'targetAttribute' => ['assign_sub_id' => 'sub_id']],
             [['assign_reviewer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reviewers::className(), 'targetAttribute' => ['assign_reviewer_id' => 'reviewer_id']],
@@ -58,6 +59,7 @@ class SubAssignment extends \yii\db\ActiveRecord
             'assign_deadline' => 'Assign Deadline',
             'assign_reviews' => 'Assign Reviews',
             'assign_sub_status' => 'Assign Sub Status',
+            'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',

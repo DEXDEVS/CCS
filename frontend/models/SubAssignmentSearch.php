@@ -19,7 +19,7 @@ class SubAssignmentSearch extends SubAssignment
     {
         return [
             [['assign_id', 'created_by', 'updated_by'], 'integer'],
-            [['assign_deadline', 'assign_reviews', 'assign_sub_status', 'created_at', 'updated_at', 'assign_sub_id', 'assign_reviewer_id'], 'safe'],
+            [['assign_deadline', 'assign_reviews', 'assign_sub_status', 'created_at', 'updated_at', 'assign_sub_id', 'assign_reviewer_id','status'], 'safe'],
         ];
     }
 
@@ -69,6 +69,7 @@ class SubAssignmentSearch extends SubAssignment
 
         $query->andFilterWhere(['like', 'assign_reviews', $this->assign_reviews])
             ->andFilterWhere(['like', 'assign_sub_status', $this->assign_sub_status])
+            ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'submissions.sub_title', $this->assign_sub_id])
             ->andFilterWhere(['like', 'reviewers.reviewer_name', $this->assign_reviewer_id]);
 

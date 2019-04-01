@@ -65,7 +65,7 @@ AppAsset::register($this);
                 ['label' => 'Conference', 'url' => ['/conferences']],
                 ['label' => 'Submission Assignment', 'url' => ['/sub-assignment']],
                 ['label' => 'Reviewer', 'url' => ['/reviewers']],
-                ['label' => 'Signup', 'url' => ['/site/signup']],
+                //['label' => 'Signup', 'url' => ['/site/signup']],
             ];
             $menuItems[] = '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
