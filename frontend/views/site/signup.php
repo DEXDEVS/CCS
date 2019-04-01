@@ -7,7 +7,12 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Signup';
+if(!empty(Yii::$app->user->identity->email)){
+    $this->title = 'Reviewer Signup';
+} else {
+    $this->title = 'Signup';
+}
+
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
@@ -19,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-6">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
                 <?php  
+
                     if(!empty(Yii::$app->user->identity->email)){
                     $email = Yii::$app->user->identity->email;
                     $domain = substr($email, strpos($email, '@')+1);
