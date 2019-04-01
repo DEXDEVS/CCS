@@ -36,7 +36,7 @@ class SubmissionsController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'create', 'view', 'update', 'delete', 'bulk-delete','search-conference','previous-submission','submission-details'],
+                        'actions' => ['logout', 'index', 'create', 'view', 'update', 'delete', 'bulk-delete','search-conference','previous-submission','submission-details', 'download-doc'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -369,14 +369,14 @@ class SubmissionsController extends Controller
 
 
     }
-
-     /**
-     * Delete multiple existing Submissions model.
-     * For ajax request will return json object
-     * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
+     // download documents.....
+    public function actionDownloadDoc($sub_id)
+    {
+        $model = Submissions::findOne($sub_id);
+        header('Content-Type:'.pathinfo($model->sub_file, PATHINFO_EXTENSION));
+        header('Content-Disposition: uploads; filename='.$model->sub_file);
+        return readfile($model->sub_file);
+    }
 
     public function actionSearchConference()
     {   
@@ -386,6 +386,13 @@ class SubmissionsController extends Controller
                     'model' => $model,
         ]);
     }
+     /**
+     * Delete multiple existing Submissions model.
+     * For ajax request will return json object
+     * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
     public function actionBulkDelete()
     {        
         $request = Yii::$app->request;
