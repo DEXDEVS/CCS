@@ -191,14 +191,30 @@ class SiteController extends Controller
                     $email = Yii::$app->user->identity->email;
                     $domain = substr($email, strpos($email, '@')+1);
                     if($domain == 'dskdconf.org'){
-                        return $this->goBack();
+                        return $this->redirect(['reviewers/index']);
                     }
                 } else {
                     Yii::$app->getUser()->login($user);
                     return $this->goHome();
                 }
             }
+        } else {
+            if ($model->load(Yii::$app->request->post())) {
+                if ($user = $model->signup()) {
+                    if(!empty(Yii::$app->user->identity->email)){
+                        $email = Yii::$app->user->identity->email;
+                        $domain = substr($email, strpos($email, '@')+1);
+                        if($domain == 'dskdconf.org'){
+                            return $this->goBack();
+                        }
+                    } else {
+                        Yii::$app->getUser()->login($user);
+                        return $this->goHome();
+                    }
+                }
+            }
         }
+        
 
         return $this->render('signup', [
             'model' => $model,

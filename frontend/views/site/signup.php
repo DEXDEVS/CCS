@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                            <?= $form->field($model, 'username')->textInput() ?>
                         </div>
                         <div class="col-md-6">
                             <?= $form->field($model, 'email') ?>
@@ -79,8 +79,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <?= $form->field($model, 'password')->passwordInput() ?> 
                 <?php   } ?>
-
-                
 
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
