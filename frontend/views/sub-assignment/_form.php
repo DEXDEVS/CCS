@@ -15,13 +15,15 @@ use dosamigos\datetimepicker\DateTimePicker;
 <div class="sub-assignment-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
     <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'sub_type')->dropDownList([ 'Abstract' => 'Abstract', 'Full Paper' => 'Full Paper', 'Poster Paper' => 'Poster Paper', ], ['prompt' => 'Submission Type','id'=>'subType']) ?>
+        </div>
         <div class="col-md-6">
             <?= $form->field($model, 'assign_sub_id')->widget(Select2::classname(), [
                 'data' => ArrayHelper::map(Submissions::find()->all(),'sub_id','sub_title'),
                 'language' => 'en',
-                'options' => ['placeholder' => 'Select'],
+                'options' => ['placeholder' => 'Select','id'=>'subTitle'],
                 'pluginOptions' => [
                     'allowClear' => true,
                     'multiple' => true
@@ -29,6 +31,9 @@ use dosamigos\datetimepicker\DateTimePicker;
                 ]);
             ?>
         </div>
+    </div>
+
+    <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'assign_reviewer_id')->widget(Select2::classname(), [
                 'data' => ArrayHelper::map(Reviewers::find()->all(),'reviewer_id','reviewer_name'),
@@ -41,9 +46,6 @@ use dosamigos\datetimepicker\DateTimePicker;
                 ]);
             ?>
         </div>
-    </div>
-
-    <div class="row">
         <div class="col-md-6">
             <label>Assign DeadLine</label>
             <?= DateTimePicker::widget([
@@ -69,3 +71,25 @@ use dosamigos\datetimepicker\DateTimePicker;
     <?php ActiveForm::end(); ?>
     
 </div>
+<?php
+$script = <<< JS
+
+//here you write all your javascript stuff
+$('#subType').change(function(){
+    var subType = $(this).val();
+    $.get('./submissions/get-submission',{subType : subType},function(data){
+        console.log(data);
+        var data =  $.parseJSON(data)
+        $('#subTitle').empty();
+        var options = '';
+            for(var i=0; i<data.length; i++) { 
+                options += '<option value="'+data[i].sub_id+'">'+data[i].sub_title+'</option>';
+            }
+        // Append to the html
+        $('#subTitle').append(options);
+    });
+});
+JS;
+$this->registerJs($script);
+?>
+</script>

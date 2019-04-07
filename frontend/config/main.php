@@ -15,8 +15,24 @@ return [
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
         ], 
+        'user' => [
+           'class' => 'dektrium\user\Module',
+       ],
     ],
     'components' => [
+        'mailer' => [
+           'class' => 'yii\swiftmailer\Mailer',
+           'viewPath' => '@app/mailer',
+           'useFileTransport' => false,
+           'transport' => [
+               'class' => 'Swift_SmtpTransport',
+               'host' => 'mail.dskdconf.org',
+               'username' => 'info@dskdconf.org',
+               'password' => 'asdf0000kfueit',
+               'port' => '587',
+               'encryption' => 'tls',
+            ],
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
@@ -41,14 +57,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];

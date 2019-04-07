@@ -19,7 +19,7 @@ class SubmissionsSearch extends Submissions
     {
         return [
             [['sub_id', 'created_by', 'updated_by'], 'integer'],
-            [['sub_type', 'conf_id', 'sub_title', 'sub_abstract', 'sub_keywords', 'sub_file', 'created_at', 'updated_at'], 'safe'],
+            [['sub_type', 'conf_id', 'sub_title', 'sub_abstract', 'sub_keywords', 'sub_file', 'created_at', 'updated_at','sub_status'], 'safe'],
         ];
     }
 
@@ -69,6 +69,7 @@ class SubmissionsSearch extends Submissions
             ->andFilterWhere(['like', 'sub_abstract', $this->sub_abstract])
             ->andFilterWhere(['like', 'sub_keywords', $this->sub_keywords])
             ->andFilterWhere(['like', 'sub_file', $this->sub_file])
+            ->andFilterWhere(['like', 'sub_status', $this->sub_status])
             ->andFilterWhere(['like', 'conferences.conf_name', $this->conf_id]);
 
         return $dataProvider;

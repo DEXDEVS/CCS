@@ -17,6 +17,7 @@ use yii\widgets\DetailView;
             'sub_abstract:ntext',
             'sub_keywords',
             'sub_file',
+            'sub_status',
             'created_at',
             'updated_at',
             'created_by',

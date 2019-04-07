@@ -14,8 +14,9 @@ $this->title = 'CCS';
         <h1>Congratulations!</h1>
 
         <p class="lead">You are few steps away from submitting your publication.</p>
-
-        <p><a class="btn btn-success" href="index.php?r=site%2Fsignup">Get started with CCS</a></p>
+        <?php if (Yii::$app->user->isGuest) { ?>
+            <p><a class="btn btn-success" href="signup">Get started with CCS</a></p>
+        <?php } ?>
     </div>
 
     <div class="body-content">

@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\SubAssignment;
+use frontend\models\Submissions;
 use frontend\models\SubAssignmentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -133,6 +134,12 @@ class SubAssignmentController extends Controller
                             $model->updated_by = '0';
                             $model->updated_at = '0';
                             $model->save(false);
+                            $title = Submissions::find()->select('count_title')->where(['sub_id'=>$value])->one();
+                            $countTitle = ($title->count_title +1);
+                            $count = Yii::$app->db->createCommand()->update('submissions',[
+                                    'count_title'=>$countTitle],
+                                    ['sub_id' => $value] 
+                            )->execute();
                         }
                     }
                     // select2 add multiple students end...! 

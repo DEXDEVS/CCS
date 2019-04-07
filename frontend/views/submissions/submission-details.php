@@ -69,7 +69,7 @@ use yii\helpers\Html;
 					                  <tr>
 					                  <th colspan="4" style="text-align: center;background-color:#F5F5F5;color:#337AB7;">
 					                  	<i class="glyphicon glyphicon-user"></i>
-					                    <?php echo $authorName[0]['author_fname'].$authorName[0]['author_mname'].$authorName[0]['author_lname']; ?>
+					                    <?php echo $authorName[0]['author_fname']." ".$authorName[0]['author_mname']." ".$authorName[0]['author_lname']; ?>
 					                  </th>
 					                </tr>  
 					                <tr>
@@ -140,6 +140,44 @@ use yii\helpers\Html;
 					</div>
 				</div>	
 			</div>
+			<?php if($submissions[0]['sub_status'] == 'Reviewed') { ?>
+							
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: #D0CFCF;font-family: georgia;">
+							<h3 style="font-size: 30px;">Review Details</h3>
+						</div>
+						<div class="panel-body">
+							<table class="table table-bordered table-hover table-condensed table-striped">
+					            <tbody>
+					            <?php $comments = Yii::$app->db->createCommand("SELECT assign_reviews,assign_sub_status FROM sub_assignment WHERE assign_sub_id = '$subid'")->queryAll(); 
+								$count = count($comments);
+			 					for ($i=0; $i <$count ; $i++) { ?>
+					                <thead>
+					                  <tr>
+					                  <th colspan="4" style="text-align: center;background-color:#F5F5F5;color:#337AB7;">
+					                  	<i class="glyphicon glyphicon-user"></i>
+					                    <?php echo "Reviewer ".($i+1); ?>
+					                  </th>
+					                </tr>  
+					                <tr>
+					                  <th style="width: 60px;">Status</th>
+					                  <td><?php echo  $comments[$i]['assign_sub_status']; ?></td>
+					                </tr>
+					                <tr>
+					                  <th style="width: 200px">Comments</th>
+					                  <td><?php echo  $comments[$i]['assign_reviews']; ?></td>
+					                </tr>
+					                </thead>
+					              <?php } ?>
+					            </tbody>
+          					</table>
+						</div>
+					</div>
+				</div>	
+			</div>
+			<?php } ?>
 		</div>
 	</div>
 </div>

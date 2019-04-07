@@ -15,6 +15,7 @@ use yii\filters\AccessControl;
 use \yii\web\Response;
 use yii\helpers\Html;
 use yii\web\UploadedFile;
+use yii\helpers\Json;
 
 
 /**
@@ -36,7 +37,7 @@ class SubmissionsController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'create', 'view', 'update', 'delete', 'bulk-delete','search-conference','previous-submission','submission-details', 'download-doc'],
+                        'actions' => ['logout', 'index', 'create', 'view', 'update', 'delete', 'bulk-delete','search-conference','previous-submission','submission-details', 'download-doc','get-submission'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -260,8 +261,8 @@ class SubmissionsController extends Controller
                             }
                             if ($flag) {
                                 $transaction->commit();
-                                return $this->goHome();
-                                Yii::$app->session->setFlash('success',"Submissions Uploaded Successfull.");
+                                return $this->redirect(['/submissions/previous-submission']);
+                                //Yii::$app->session->setFlash('success',"Submissions Uploaded Successfull.");
                             }
                         } catch (Exception $e) {
                             $transaction->rollBack();
@@ -368,6 +369,11 @@ class SubmissionsController extends Controller
         }
 
 
+    }
+    public function actionGetSubmission($subType){
+        // fine the zip code from the locations table
+        $submission = Submissions::find()->where(['sub_type' => $subType])->andWhere(['<', 'count_title', 3])->all();
+        echo Json::encode($submission); 
     }
      // download documents.....
     public function actionDownloadDoc($sub_id)

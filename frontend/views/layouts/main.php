@@ -37,11 +37,10 @@ AppAsset::register($this);
                 'class' => 'navbar-inverse navbar-fixed-top',
             ],
         ]);
-        
             $menuItems[] = ['label' => 'Home', 'url' => ['/site/index']];
             $menuItems[] = ['label' => 'Contact', 'url' => ['/site/contact']];
-            $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-            $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+            array_push($menuItems,['label' => 'Sign In', 'url' => ['/user/login']],['label' => 'Sign Up', 'url' => ['/user/register']]);
+            //$menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
         
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
@@ -50,9 +49,9 @@ AppAsset::register($this);
         NavBar::end();
     } 
     if(!empty(Yii::$app->user->identity->email)){
-        $email = Yii::$app->user->identity->email;
-        $domain = substr($email, strpos($email, '@')+1);
-        if($domain == 'dskdconf.org'){
+        // $email = Yii::$app->user->identity->email;
+        // $domain = substr($email, strpos($email, '@')+1);
+        if(Yii::$app->user->identity->email == 'dexdevs007@gmail.com'){
             NavBar::begin([
                 'brandLabel' => 'Conference Conduction Studio (CCS)',
                 'brandUrl' => Yii::$app->homeUrl,
@@ -63,6 +62,7 @@ AppAsset::register($this);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'Conference', 'url' => ['/conferences']],
+                ['label' => 'Submissions', 'url' => ['/submissions']],
                 ['label' => 'Submission Assignment', 'url' => ['/sub-assignment']],
                 ['label' => 'Reviewer', 'url' => ['/reviewers']],
                 //['label' => 'Signup', 'url' => ['/site/signup']],
@@ -109,6 +109,30 @@ AppAsset::register($this);
                 'items' => $menuItems,
             ]);
             NavBar::end();
+        } else if (Yii::$app->user->identity->username == 'dexdevs') {
+            NavBar::begin([
+                'brandLabel' => 'Conference Conduction Studio (CCS)',
+                'brandUrl' => Yii::$app->homeUrl,
+                'options' => [
+                    'class' => 'navbar-inverse navbar-fixed-top',
+                ],
+            ]);
+                $menuItems[] = ['label' => 'Admin Sign Up', 'url' => ['/user/register']];
+                
+                $menuItems[] = '<li>'
+                . Html::beginForm(['/site/logout'], 'post')
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>';
+        
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => $menuItems,
+            ]);
+            NavBar::end();
         } else {
             NavBar::begin([
                 'brandLabel' => 'Conference Conduction Studio (CCS)',
@@ -119,18 +143,14 @@ AppAsset::register($this);
             ]);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
                 ['label' => 'Submissions', 'url' => ['/submissions/search-conference']],
                 ['label' => 'Previous Submissions', 'url' => ['/submissions/previous-submission']],
+                ['label' => 'Contact', 'url' => ['/site/contact']],
             ];
-            $menuItems[] = '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>';
+            array_push($menuItems,['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+               'url' => ['/site/logout'],
+               'linkOptions' => ['data-method' => 'post']]
+            );
         
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],

@@ -32,6 +32,7 @@ class SubAssignment extends \yii\db\ActiveRecord
         return 'sub_assignment';
     }
 
+        public $sub_type;
     /**
      * {@inheritdoc}
      */
@@ -40,7 +41,7 @@ class SubAssignment extends \yii\db\ActiveRecord
         return [
             [['assign_sub_id', 'assign_reviewer_id', 'assign_deadline'], 'required'],
             [['assign_sub_id', 'assign_reviewer_id', 'created_by', 'updated_by'], 'integer'],
-            [['assign_deadline','created_at', 'updated_at', 'created_by', 'updated_by', 'assign_reviews', 'assign_sub_status' ,'status'], 'safe'],
+            [['assign_deadline','created_at', 'updated_at', 'created_by', 'updated_by', 'assign_reviews', 'assign_sub_status' ,'status','sub_type'], 'safe'],
             [['assign_reviews', 'assign_sub_status'], 'string'],
             [['assign_sub_id'], 'exist', 'skipOnError' => true, 'targetClass' => Submissions::className(), 'targetAttribute' => ['assign_sub_id' => 'sub_id']],
             [['assign_reviewer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reviewers::className(), 'targetAttribute' => ['assign_reviewer_id' => 'reviewer_id']],
@@ -56,10 +57,11 @@ class SubAssignment extends \yii\db\ActiveRecord
             'assign_id' => 'Assign ID',
             'assign_sub_id' => 'Submission Title',
             'assign_reviewer_id' => 'Reviewer Name',
-            'assign_deadline' => 'Assign Deadline',
+            'sub_type' => 'Submission Type',
+            'assign_deadline' => 'Review Deadline',
             'assign_reviews' => 'Assign Reviews',
             'assign_sub_status' => 'Assign Sub Status',
-            'status' => 'Status',
+            'status' => 'Reviews Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',

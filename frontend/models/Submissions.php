@@ -14,6 +14,7 @@ use Yii;
  * @property string $sub_abstract
  * @property string $sub_keywords
  * @property string $sub_file
+ * @property string $sub_status
  * @property string $created_at
  * @property string $updated_at
  * @property int $created_by
@@ -44,7 +45,7 @@ class Submissions extends \yii\db\ActiveRecord
             [['conf_id', 'sub_type', 'sub_title', 'sub_abstract', 'sub_keywords', 'sub_file'], 'required'],
             [['conf_id', 'created_by', 'updated_by','search_conference'], 'integer'],
             [['sub_abstract'], 'string'],
-            [['conf_id','created_at', 'updated_at', 'created_by', 'updated_by','search_conference'], 'safe'],
+            [['conf_id','created_at', 'updated_at', 'created_by', 'updated_by','search_conference','sub_status'], 'safe'],
             [['sub_type', 'sub_keywords'], 'string', 'max' => 56],
             [['sub_title'], 'string', 'max' => 256],
             [['sub_file'], 'string', 'max' => 120],
@@ -67,6 +68,7 @@ class Submissions extends \yii\db\ActiveRecord
             'sub_abstract' => 'Abstract',
             'sub_keywords' => 'Keywords',
             'sub_file' => 'File',
+            'sub_status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',

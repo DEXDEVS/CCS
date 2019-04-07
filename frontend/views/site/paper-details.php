@@ -78,8 +78,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			 				</textarea>
 			 			</div>
 			 			<div class="form-group">
-			 				<label>Select</label>
+			 				<label>Status</label>
 			 				<select name="select" class="form-control">
+			 					<option>Select Status</option>
 			 					<option value="Accepted">Accepted</option>
 			 					<option value="Rejected">Rejected</option>
 			 				</select>
@@ -91,3 +92,5 @@ $this->params['breadcrumbs'][] = $this->title;
 	 	</div>
 	 </div>
 </div>
+
+
