@@ -15,38 +15,45 @@
 		<tbody>
 			<tr>
 				<td>1</td>
-				<td>faraz</td>
-				<td>Admin</td>
-				<td>farazahmed@dskdconf.org</td>
-				<td>faraz123</td>
+				<td>dexdevs</td>
+				<td>superadmin</td>
+				<td>dexdevs007@gmail.com</td>
+				<td>dexdevs321</td>
 			</tr>
 			<tr>
 				<td>2</td>
-				<td>nadia</td>
-				<td>Reviewer</td>
-				<td>nadiagull285@gmail.com</td>
-				<td>nadia123</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>anasshafqat</td>
-				<td>Reviewer</td>
-				<td>anasshafqat01@gmail.com</td>
-				<td>anas123</td>
-			</tr>
-			<tr>
-				<td>4</td>
 				<td>kinza</td>
-				<td>Subscriber</td>
+				<td>admin</td>
 				<td>kinza.fatima.522@gmail.com</td>
 				<td>kinza123</td>
 			</tr>
 			<tr>
-				<td>5</td>
-				<td>nauman</td>
+				<td>3</td>
+				<td>nadia</td>
 				<td>Subscriber</td>
-				<td>nauman@gmail.com</td>
-				<td>nauman123</td>
+				<td>nadiagull285@gmail.com</td>
+				<td>nadia123</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>anasshafqat</td>
+				<td>Subscriber</td>
+				<td>anasshafqat01@gmail.com</td>
+				<td>anas123</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>faraz_reviewer</td>
+				<td>reviewer</td>
+				<td>admin@ranafaraz.com</td>
+				<td>admin123</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>anas</td>
+				<td>reviewer</td>
+				<td>anas@dexdevs.com</td>
+				<td>anas123</td>
 			</tr>
 		</tbody>
 	</tr>

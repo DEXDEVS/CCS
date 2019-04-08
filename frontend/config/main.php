@@ -26,9 +26,9 @@ return [
            'useFileTransport' => false,
            'transport' => [
                'class' => 'Swift_SmtpTransport',
-               'host' => 'mail.dskdconf.org',
-               'username' => 'info@dskdconf.org',
-               'password' => 'asdf0000kfueit',
+               'host' => 'smtp.gmail.com',
+               'username' => 'anasshafqat02@gmail.com',
+               'password' => 'anas12345',
                'port' => '587',
                'encryption' => 'tls',
             ],

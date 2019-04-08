@@ -15,7 +15,7 @@ $this->title = 'CCS';
 
         <p class="lead">You are few steps away from submitting your publication.</p>
         <?php if (Yii::$app->user->isGuest) { ?>
-            <p><a class="btn btn-success" href="signup">Get started with CSS</a></p>
+            <p><a class="btn btn-success" href="../user/register">Get started with CSS</a></p>
         <?php } ?>
     </div>
 
@@ -30,7 +30,7 @@ $this->title = 'CCS';
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="index.php?r=site/documentation">CSS Documentation &raquo;</a></p>
+                <p><a class="btn btn-default" href="site/documentation">CSS Documentation &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>How it works?</h2>
