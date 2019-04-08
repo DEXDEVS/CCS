@@ -151,26 +151,35 @@ use yii\helpers\Html;
 						<div class="panel-body">
 							<table class="table table-bordered table-hover table-condensed table-striped">
 					            <tbody>
-					            <?php $comments = Yii::$app->db->createCommand("SELECT assign_reviews,assign_sub_status FROM sub_assignment WHERE assign_sub_id = '$subid'")->queryAll(); 
-								$count = count($comments);
-			 					for ($i=0; $i <$count ; $i++) { ?>
+					            <?php $reviewerId = Yii::$app->db->createCommand("SELECT assign_reviewer_id FROM sub_assignment WHERE assign_sub_id = '$subid' ")->queryAll(); 
+					            $count = count($reviewerId);
+			 					for ($i=0; $i <$count ; $i++) {
+			 						$j =0;
+			 					$ID = $reviewerId[$i]['assign_reviewer_id']; 
+					            $comments = Yii::$app->db->createCommand("SELECT assign_reviews,assign_sub_status FROM sub_assignment WHERE assign_sub_id = '$subid' AND assign_reviewer_id = '$ID' ")->queryAll();
+					            if($comments[0]['assign_sub_status'] == NULL){
+					            	echo '';
+					            } else{
+					            	$j++;
+								?>
+
 					                <thead>
 					                  <tr>
 					                  <th colspan="4" style="text-align: center;background-color:#F5F5F5;color:#337AB7;">
 					                  	<i class="glyphicon glyphicon-user"></i>
-					                    <?php echo "Reviewer ".($i+1); ?>
+					                    <?php echo "Reviewer ".($j); ?>
 					                  </th>
 					                </tr>  
 					                <tr>
 					                  <th style="width: 60px;">Status</th>
-					                  <td><?php echo  $comments[$i]['assign_sub_status']; ?></td>
+					                  <td><?php echo  $comments[0]['assign_sub_status']; ?></td>
 					                </tr>
 					                <tr>
 					                  <th style="width: 200px">Comments</th>
-					                  <td><?php echo  $comments[$i]['assign_reviews']; ?></td>
+					                  <td><?php echo  $comments[0]['assign_reviews']; ?></td>
 					                </tr>
 					                </thead>
-					              <?php } ?>
+					              <?php } }?>
 					            </tbody>
           					</table>
 						</div>

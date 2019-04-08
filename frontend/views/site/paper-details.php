@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			 		<h3 style="margin:0 auto;text-align:center;font-family: georgia;background-color:#337AB7;width:200px;color:white;padding:10px;">For Acceptance</h3>
 			 	</div>
 			 	<div class="panel-body">
-			 		<form method="post" action="index.php?r=site/reviews">
+			 		<form method="post" action="reviews">
 		                <div class="form-group">
 		                    <input type="hidden" name="_csrf" class="form-control" value="<?=Yii::$app->request->getCsrfToken()?>"> 
 		                    <input type="hidden" name="id" class="form-control" value="<?php echo $id;?>">          
