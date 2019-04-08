@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2019 at 08:51 PM
+-- Generation Time: Apr 08, 2019 at 09:20 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -191,12 +191,12 @@ INSERT INTO `profile` (`user_id`, `name`, `public_email`, `gravatar_email`, `gra
 (14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (21, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -326,7 +326,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `usertype` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `usertype` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password_hash` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `confirmed_at` int(11) DEFAULT NULL,
@@ -349,10 +349,10 @@ INSERT INTO `user` (`id`, `username`, `email`, `usertype`, `password_hash`, `aut
 (16, 'kinza', 'kinza.fatima.522@gmail.com', 'Admin', '$2y$10$vL8/cMn3NliYNoPihkCove7WKi3ixY3aZUKcKsQK30B1UBTxSz7q2', 'f4VQ-YDdOHyOx9ermBP8cRP_l1RSYUg6', 1554736569, NULL, NULL, '::1', 1554714257, 1554714257, 10, 0, 1554747747),
 (17, 'waleed', 'wbinnaeem@gmail.com', '', '$2y$10$QD55iSnx2cLKjW2vvCHeOefEqMtOOUTxhXtftzc7BsyRy1/ldJd4.', 'ZUCyCJMLeN4uqj4T-gCfVIMr2EnOBIhk', 1554737406, NULL, NULL, '::1', 1554737368, 1554737368, 10, 0, 1554737657),
 (18, 'dexdevs', 'dexdevs007@gmail.com', 'superadmin', '$2y$10$0vtiafFHqqbLqV6x1OKcgOItYC1xtwVmGoVQ4wD4DBAJ7D7nGfy1S', 'W81jrT5-145-wXbFSCgspDdFU1qKZTIv', 1554739898, NULL, NULL, '::1', 1554739821, 1554739821, 10, 0, 1554747090),
-(19, 'sadiagull', 'sadiagull400@gmail.com', 'Admin', '$2y$10$9eFSAYurp2nx6TyqTu9uze70Qadbe/4BHpC0WxfhJKi1K48g/b3v.', '7ldr890_HJufxKZ3iFtLJDzd1uHwlhY0', 1554740705, NULL, NULL, '::1', 1554740512, 1554740512, 10, 0, 1554741604),
 (20, 'anasshafqat', 'anasshafqat01@gmail.com', '', '$2y$10$/eRrKQbbGwwaCxOAY.qEV.NUa1ElaRzf0rqmnGYYWzVce.rhsApt.', 'Ja8ppCvwVrzNsuSf3gvWJm_b1q8wPpax', 1554743552, NULL, NULL, '::1', 1554743424, 1554743424, 10, 0, NULL),
 (21, 'anas', 'anas@dexdevs.com', 'Reviewer', '$2y$10$qlImhK7Iz9dD7O6xA.NCLukaeYVRtE4VgwRhevYX.ixTa5WLNgTfO', 'ApPDXwZewtw4uomWX9ChaewGnkCh2F-T', 1554746553, NULL, NULL, '::1', 1554745839, 1554745839, 10, 0, 1554747568),
-(22, 'faraz_reviewer', 'admin@ranafaraz.com', 'Reviewer', '$2y$10$B6222HJTmyY6mdGVgug8meoZqYhqytucFdXGIUnKZoK4BdSrkKVni', '8PIZRhAkvP007ownLAid982IPwNESM7t', 1554747505, NULL, NULL, '::1', 1554747331, 1554747331, 10, 0, 1554747915);
+(22, 'faraz_reviewer', 'admin@ranafaraz.com', 'Reviewer', '$2y$10$B6222HJTmyY6mdGVgug8meoZqYhqytucFdXGIUnKZoK4BdSrkKVni', '8PIZRhAkvP007ownLAid982IPwNESM7t', 1554747505, NULL, NULL, '::1', 1554747331, 1554747331, 10, 0, 1554747915),
+(23, 'sadiagull', 'sadiagull400@gmail.com', NULL, '$2y$10$i.jifaZXZPmtZVZ1xIYBZOyhJrlTW9eILzVB.AZcIY.xbQl1rPpmK', 'JGhKyGbSTtnJSGfKrsLL2rnND0KAZEM1', 1554751117, NULL, NULL, '::1', 1554751091, 1554751091, 10, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -515,7 +515,7 @@ ALTER TABLE `sub_assignment`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user2`
