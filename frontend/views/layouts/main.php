@@ -31,7 +31,7 @@ AppAsset::register($this);
     <?php
     if (Yii::$app->user->isGuest) {
         NavBar::begin([
-            'brandLabel' => 'Conference Conduction Studio (CCS)',
+            'brandLabel' => 'Conference Submission Studio (CSS)',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
@@ -54,7 +54,7 @@ AppAsset::register($this);
         $domain = substr($email, strpos($email, '@')+1);
         if($domain == 'dskdconf.org'){
             NavBar::begin([
-                'brandLabel' => 'Conference Conduction Studio (CCS)',
+                'brandLabel' => 'Conference Submission Studio (CSS)',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -84,7 +84,7 @@ AppAsset::register($this);
             NavBar::end();
         } else if(Yii::$app->user->identity->usertype == 'Reviewer'){
             NavBar::begin([
-                'brandLabel' => 'Conference Conduction Studio (CCS)',
+                'brandLabel' => 'Conference Submission Studio (CSS)',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -112,7 +112,7 @@ AppAsset::register($this);
             NavBar::end();
         } else {
             NavBar::begin([
-                'brandLabel' => 'Conference Conduction Studio (CCS)',
+                'brandLabel' => 'Conference Submission Studio (CSS)',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',

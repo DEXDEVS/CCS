@@ -15,7 +15,7 @@ $this->title = 'CCS';
 
         <p class="lead">You are few steps away from submitting your publication.</p>
         <?php if (Yii::$app->user->isGuest) { ?>
-            <p><a class="btn btn-success" href="signup">Get started with CCS</a></p>
+            <p><a class="btn btn-success" href="signup">Get started with CSS</a></p>
         <?php } ?>
     </div>
 
@@ -23,14 +23,14 @@ $this->title = 'CCS';
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>What CCS is?</h2>
+                <h2>What CSS is?</h2>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="index.php?r=site/documentation">CCS Documentation &raquo;</a></p>
+                <p><a class="btn btn-default" href="index.php?r=site/documentation">CSS Documentation &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>How it works?</h2>
@@ -40,7 +40,7 @@ $this->title = 'CCS';
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="#">CCS FAQ &raquo;</a></p>
+                <p><a class="btn btn-default" href="#">CSS FAQ &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Heading</h2>
@@ -50,7 +50,7 @@ $this->title = 'CCS';
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="#">CCS Partners &raquo;</a></p>
+                <p><a class="btn btn-default" href="#">CSS Partners &raquo;</a></p>
             </div>
         </div>
 
