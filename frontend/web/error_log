@@ -1,0 +1,62 @@
+[27-Mar-2019 01:35:59 America/New_York] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/ranaifwh/public_html/CCS/frontend/controllers/SiteController.php on line 60. in /home/ranaifwh/public_html/CCS/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/ranaifwh/public_html/CCS/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/ranaifwh/public_html/CCS/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/ranaifwh/public_html/CCS/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/ranaifwh/public_html/CCS/frontend/controllers/SiteController.php on line 60. in /home/ranaifwh/public_html/CCS/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/ranaifwh/public_html/CCS/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/ranaifwh/public_html/CCS/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/ranaifwh/public_html/CCS/frontend/web/index.php(17): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'LSPHP_ENABLE_USER_INI' => 'on',
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9',
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+    'CONTENT_LENGTH' => '107',
+    'HTTP_COOKIE' => 'wp-settings-time-1=1552934647; timezone=Asia/Karachi; session_locale=en; cpsession=ranaifwh%3a8cM79yDLtYlHnwLG%2cb889fcb84b71edf8aa603e6e1f89cf51; advanced-frontend=52b197f9d5f4e1046c326d44359cb51d; _identity-frontend=e821a5fd8da7517491ec99c0d1e9738d13be4c8fd12cc863f5c166aff83d90d5a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B2%2C%226RE-O9tVpBeXE1sumSpKI1mgiJdY6njS%22%2C2592000%5D%22%3B%7D; _csrf-frontend=72851e8e686900895eee4b4cf88b2f724573debd812ec12fb1cb9f01793e2047a%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%220ZlCuEmOYXp82tnK6Pw0OresMji3kFIi%22%3B%7D',
+    'HTTP_HOST' => 'ranafaraz.com',
+    'HTTP_REFERER' => 'https://ranafaraz.com/CCS/frontend/web/index.php?r=site/paper-details&id=1',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '203.135.23.210',
+    'HTTP_ORIGIN' => 'https://ranafaraz.com',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'HTTP_DNT' => '1',
+    'HTTP_X_FORWARDED_PROTO' => 'https',
+    'HTTP_X_HTTPS' => 'on',
+    'HTTPS' => 'on',
+    'SERVER_PORT' => '443',
+    'UNIQUE_ID' => 'XJsLv6p1K3W4IYpuUW7X7wAAANY',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'ranafaraz.com',
+    'SERVER_ADDR' => '68.65.122.244',
+    'REMOTE_ADDR' => '203.135.23.210',
+    'DOCUMENT_ROOT' => '/home/ranaifwh/public_html',
+    'REQUEST_SCHEME' => 'https',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/ranaifwh/public_html',
+    'SERVER_ADMIN' => 'webmaster@ranafaraz.com',
+    'SCRIPT_FILENAME' => '/home/ranaifwh/public_html/CCS/frontend/web/index.php',
+    'REMOTE_PORT' => '53346',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'POST',
+    'QUERY_STRING' => 'r=site%2Fdownload-doc&sub_id=1',
+    'REQUEST_URI' => '/CCS/frontend/web/index.php?r=site%2Fdownload-doc&sub_id=1',
+    'SCRIPT_NAME' => '/CCS/frontend/web/index.php',
+    'PHP_SELF' => '/CCS/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1553664959.4217250347137451171875,
+    'REQUEST_TIME' => 1553664959,
+]

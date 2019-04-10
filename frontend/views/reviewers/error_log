@@ -1,0 +1,4 @@
+[05-Apr-2019 07:30:19 America/New_York] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /home/ranaifwh/public_html/CCS/frontend/views/reviewers/index.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/ranaifwh/public_html/CCS/frontend/views/reviewers/index.php on line 13

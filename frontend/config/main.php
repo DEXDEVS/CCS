@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'name' => 'Conference Submission Studio',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
@@ -27,9 +28,9 @@ return [
            'transport' => [
                'class' => 'Swift_SmtpTransport',
                'host' => 'smtp.gmail.com',
-               'username' => 'anasshafqat02@gmail.com',
-               'password' => 'anas12345',
-               'port' => '587',
+               'username' => 'dskdconf@gmail.com',
+               'password' => 'dskdconf123',
+               'port' => '587 ',
                'encryption' => 'tls',
             ],
         ],
