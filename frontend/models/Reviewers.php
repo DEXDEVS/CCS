@@ -57,7 +57,7 @@ class Reviewers extends \yii\db\ActiveRecord
         return [
             'reviewer_id' => 'Reviewer ID',
             'reviewer_name' => 'Name',
-            'reviewer_cnic' => 'Cnic',
+            'reviewer_cnic' => 'CNIC',
             'reviewer_designation' => 'Designation',
             'reviewer_email' => 'Email',
             'reviewer_domain' => 'Domain',

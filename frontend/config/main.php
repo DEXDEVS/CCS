@@ -63,6 +63,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'index' => 'site/index',
+                'sub-assignment' => 'sub-assignment/index',
             ],
         ],
         

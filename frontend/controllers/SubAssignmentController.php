@@ -120,10 +120,12 @@ class SubAssignmentController extends Controller
                     $arraySubIds = $model->assign_sub_id;
                     $arrayReviewerIds = $model->assign_reviewer_id;
                     $assignDeadline = $model->assign_deadline;
+                    $subType = $model->sub_type;
 
                     foreach ($arrayReviewerIds as  $valu) {
                         foreach ($arraySubIds as  $value) {
                             $model = new SubAssignment();
+                            $model->sub_type = $subType;
                             $model->assign_sub_id = $value;
                             $model->assign_reviewer_id = $valu;
                             $model->assign_deadline = $assignDeadline;

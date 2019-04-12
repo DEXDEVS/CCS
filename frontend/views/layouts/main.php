@@ -37,7 +37,7 @@ AppAsset::register($this);
                 'class' => 'navbar-inverse navbar-fixed-top',
             ],
         ]);
-            $menuItems[] = ['label' => 'Home', 'url' => ['/site/index']];
+            $menuItems[] = ['label' => 'Home', 'url' => ['/index']];
             $menuItems[] = ['label' => 'Contact', 'url' => ['/site/contact']];
             array_push($menuItems,['label' => 'Sign In', 'url' => ['/user/login']],['label' => 'Sign Up', 'url' => ['/user/register']]);
             //$menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -61,11 +61,11 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'Conference', 'url' => ['/conferences']],
-                ['label' => 'Submissions', 'url' => ['/submissions']],
+                ['label' => 'Home', 'url' => ['/index']],
+                ['label' => 'Conferences', 'url' => ['/conferences']],
+                ['label' => 'All Submissions', 'url' => ['/submissions']],
                 ['label' => 'Submission Assignment', 'url' => ['/sub-assignment']],
-                ['label' => 'Reviewer', 'url' => ['/reviewers']],
+                ['label' => 'Reviewers', 'url' => ['/reviewers']],
                 //['label' => 'Signup', 'url' => ['/site/signup']],
             ];
             $menuItems[] = '<li>'
@@ -91,9 +91,9 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
+                ['label' => 'Home', 'url' => ['/index']],
                 //['label' => 'Contact', 'url' => ['/site/contact']],
-                ['label' => 'Reviews', 'url' => ['site/reviews']],
+                ['label' => 'Your Assignments', 'url' => ['site/reviews']],
                 
             ];
             $menuItems[] = '<li>'
@@ -118,6 +118,7 @@ AppAsset::register($this);
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
+                $menuItems[] = ['label' => 'Home', 'url' => ['/index']];
                 $menuItems[] = ['label' => 'Admin Sign Up', 'url' => ['/user/register']];
                 
                 $menuItems[] = '<li>'
@@ -143,9 +144,9 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
+                ['label' => 'Home', 'url' => ['/index']],
                 ['label' => 'Submissions', 'url' => ['/submissions/search-conference']],
-                ['label' => 'Previous Submissions', 'url' => ['/submissions/previous-submission']],
+                ['label' => 'Your Submissions', 'url' => ['/submissions/previous-submission']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
             ];
             // array_push($menuItems,['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
@@ -181,7 +182,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; CCS <?= date('Y') ?></p>
+        <p class="pull-left">&copy; CSS <?= date('Y') ?></p>
 
         <p class="pull-right">Powered by <a href="http://www.dexdevs.com" target="_blank"><b><i>DEXDEVS</i></b></a></p>
     </div>

@@ -28,12 +28,20 @@ return [
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'conf_start_date',
+        'attribute'=>'conf_domain',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'conf_end_date',
+        'attribute'=>'conf_scope',
     ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'conf_start_date',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'conf_end_date',
+    // ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'conf_abstract_DL',

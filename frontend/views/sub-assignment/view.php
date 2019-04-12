@@ -10,9 +10,12 @@ use yii\widgets\DetailView;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'assign_id',
-            'assign_sub_id',
-            'assign_reviewer_id',
+            //'assign_id',
+            'sub_type',
+            //'assign_sub_id',
+            'assignSub.sub_title',
+            //'assign_reviewer_id',
+            'assignReviewer.reviewer_name',
             'assign_deadline',
             'assign_reviews:ntext',
             'assign_sub_status',

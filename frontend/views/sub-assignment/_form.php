@@ -17,7 +17,7 @@ use dosamigos\datetimepicker\DateTimePicker;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'sub_type')->dropDownList([ 'Abstract' => 'Abstract', 'Full Paper' => 'Full Paper', 'Poster Paper' => 'Poster Paper', ], ['prompt' => 'Submission Type','id'=>'subType']) ?>
+            <?= $form->field($model, 'sub_type')->dropDownList([ 'Abstract' => 'Abstract', 'Full Paper' => 'Full Paper', 'Poster Paper' => 'Poster Paper'], ['prompt' => 'Submission Type','id'=>'subType']) ?>
         </div>
         <div class="col-md-6">
             <?= $form->field($model, 'assign_sub_id')->widget(Select2::classname(), [
@@ -47,7 +47,7 @@ use dosamigos\datetimepicker\DateTimePicker;
             ?>
         </div>
         <div class="col-md-6">
-            <label>Assign DeadLine</label>
+            <label>Review Deadline</label>
             <?= DateTimePicker::widget([
                 'model' => $model,
                 'attribute' => 'assign_deadline',

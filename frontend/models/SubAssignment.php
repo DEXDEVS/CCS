@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "sub_assignment".
  *
  * @property int $assign_id
+ * @property string $sub_type
  * @property int $assign_sub_id
  * @property int $assign_reviewer_id
  * @property string $assign_deadline
@@ -32,17 +33,17 @@ class SubAssignment extends \yii\db\ActiveRecord
         return 'sub_assignment';
     }
 
-        public $sub_type;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['assign_sub_id', 'assign_reviewer_id', 'assign_deadline'], 'required'],
+            [['sub_type', 'assign_sub_id', 'assign_reviewer_id', 'assign_deadline', 'assign_reviews', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'required'],
+            [['sub_type', 'assign_reviews', 'status'], 'string'],
             [['assign_sub_id', 'assign_reviewer_id', 'created_by', 'updated_by'], 'integer'],
-            [['assign_deadline','created_at', 'updated_at', 'created_by', 'updated_by', 'assign_reviews', 'assign_sub_status' ,'status','sub_type'], 'safe'],
-            [['assign_reviews', 'assign_sub_status'], 'string'],
+            [['assign_deadline', 'created_at', 'updated_at'], 'safe'],
+            [['assign_sub_status'], 'string', 'max' => 10],
             [['assign_sub_id'], 'exist', 'skipOnError' => true, 'targetClass' => Submissions::className(), 'targetAttribute' => ['assign_sub_id' => 'sub_id']],
             [['assign_reviewer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reviewers::className(), 'targetAttribute' => ['assign_reviewer_id' => 'reviewer_id']],
         ];
@@ -55,13 +56,13 @@ class SubAssignment extends \yii\db\ActiveRecord
     {
         return [
             'assign_id' => 'Assign ID',
-            'assign_sub_id' => 'Submission Title',
-            'assign_reviewer_id' => 'Reviewer Name',
             'sub_type' => 'Submission Type',
+            'assign_sub_id' => 'Submission title',
+            'assign_reviewer_id' => 'Reviewer\'s Name',
             'assign_deadline' => 'Review Deadline',
             'assign_reviews' => 'Assign Reviews',
             'assign_sub_status' => 'Assign Sub Status',
-            'status' => 'Reviews Status',
+            'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',

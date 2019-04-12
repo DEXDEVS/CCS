@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Paper Reviews';
+$this->title = 'Your Assignments';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php
@@ -73,10 +73,10 @@ if (isset($_POST['submit'])) {
                             </div>
                           <?php  } 
                             if($count != 0){ ?>
-                          <h4> <b>Total Allotments:</b> <?php echo $count ?> &nbsp;&nbsp;&nbsp; 
-                               <b>Total Accepted:</b> <?php echo $accepted ?> &nbsp;&nbsp;&nbsp; 
-                               <b>Total Rejected:</b> <?php echo $rejected ?> &nbsp;&nbsp;&nbsp;
-                               <b>Total Pending:</b> <?php echo $pending ?> &nbsp;&nbsp;&nbsp;
+                          <h4> <b>Total Assignments:</b> <?php echo $count ?> &nbsp;&nbsp;&nbsp; 
+                               <b>Accepted:</b> <?php echo $accepted ?> &nbsp;&nbsp;&nbsp; 
+                               <b>Rejected:</b> <?php echo $rejected ?> &nbsp;&nbsp;&nbsp;
+                               <b>Pending:</b> <?php echo $pending ?> &nbsp;&nbsp;&nbsp;
                           </h4>
                         <?php } ?>
                						<?php for ($i=0; $i <$count ; $i++) { 
@@ -87,9 +87,11 @@ if (isset($_POST['submit'])) {
                								<a href="paper-details?id=<?php echo $paperId; ?>">
                								<b><?php echo $assignPaperName[0]['sub_title']; ?></b>
                								</a><br>
+                              <label>Submission Type: </label>
+                              <?php echo $assignPaperIds[$i]['sub_type']; ?>&nbsp;&nbsp;&nbsp;
                								<label>Keywords: </label>
                								<?php echo $assignPaperName[0]['sub_keywords']; ?>&nbsp;&nbsp;&nbsp;
-               								<label>DeadLine: </label>
+               								<label>Deadline: </label>
                								<?php echo $assignPaperName[0]['assign_deadline']; ?>&nbsp;&nbsp;&nbsp;
                               <label>Status: </label>
                               <?php echo $assignPaperName[0]['status']; ?>&nbsp;&nbsp;&nbsp;

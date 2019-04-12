@@ -30,10 +30,10 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'reviewer_email',
     ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'reviewer_domain',
-    // ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'reviewer_domain',
+    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'reviewer_contact_no',

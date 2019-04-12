@@ -11,6 +11,8 @@ use Yii;
  * @property string $conf_name
  * @property string $conf_year
  * @property string $conf_venue
+ * @property string $conf_domain
+ * @property string $conf_scope
  * @property string $conf_start_date
  * @property string $conf_end_date
  * @property string $conf_abstract_DL
@@ -40,10 +42,11 @@ class Conferences extends \yii\db\ActiveRecord
     {
         return [
             [['conf_name', 'conf_year', 'conf_venue', 'conf_start_date', 'conf_end_date', 'conf_abstract_DL', 'conf_poster_DL', 'conf_fullpaper_DL'], 'required'],
-            [['conf_year', 'conf_start_date', 'conf_end_date', 'conf_abstract_DL', 'conf_poster_DL', 'conf_fullpaper_DL', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
+            [['conf_year', 'conf_start_date', 'conf_end_date', 'conf_abstract_DL', 'conf_poster_DL', 'conf_fullpaper_DL', 'created_at', 'updated_at', 'conf_domain', 'conf_scope', 'created_by', 'updated_by'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
             [['conf_name'], 'string', 'max' => 512],
             [['conf_venue'], 'string', 'max' => 100],
+            [['conf_domain', 'conf_scope'], 'string', 'max' => 255],
         ];
     }
 
@@ -54,14 +57,16 @@ class Conferences extends \yii\db\ActiveRecord
     {
         return [
             'conf_id' => 'Conf ID',
-            'conf_name' => 'Conference Name',
+            'conf_name' => 'Conf Name',
             'conf_year' => 'Year',
             'conf_venue' => 'Venue',
+            'conf_domain' => 'Domain',
+            'conf_scope' => 'Scope',
             'conf_start_date' => 'Start Date',
             'conf_end_date' => 'End Date',
-            'conf_abstract_DL' => 'Abstract DeadLine',
-            'conf_poster_DL' => 'Poster DeadLine',
-            'conf_fullpaper_DL' => 'FullPaper DeadLine',
+            'conf_abstract_DL' => 'Abstract Deadline',
+            'conf_poster_DL' => 'Poster Deadline',
+            'conf_fullpaper_DL' => 'Fullpaper Deadline',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',

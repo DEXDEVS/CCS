@@ -16,7 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	$conf_id = $paperDetails[0]['conf_id'];
 
 	$confDetails = Yii::$app->db->createCommand("SELECT conf_name FROM conferences WHERE conf_id = '$conf_id'")->queryAll();
-	
+	$reviewerEmail = Yii::$app->user->identity->email;
+    $Id = Yii::$app->db->createCommand("SELECT reviewer_id FROM reviewers WHERE reviewer_email = '$reviewerEmail'")->queryAll();
+    $reviewerId = $Id[0]['reviewer_id'];
+    $assignStatus = Yii::$app->db->createCommand("SELECT assign_reviews,assign_sub_status FROM sub_assignment WHERE assign_reviewer_id = '$reviewerId' AND assign_sub_id = '$id'")->queryAll();
 
  ?>
 <div class="container-fluid">
@@ -64,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	 	<div class="col-md-12">
 	 		<div class="panel panel-default">
 			 	<div class="panel-heading">
-			 		<h3 style="margin:0 auto;text-align:center;font-family: georgia;background-color:#337AB7;width:200px;color:white;padding:10px;">For Acceptance</h3>
+			 		<h3 style="margin:0 auto;text-align:center;font-family: georgia;background-color:#337AB7;width:200px;color:white;padding:10px;">Review Section</h3>
 			 	</div>
 			 	<div class="panel-body">
 			 		<form method="post" action="reviews">
@@ -74,16 +77,33 @@ $this->params['breadcrumbs'][] = $this->title;
 		                </div>       
 			 			<div class="form-group">
 			 				<label>Comments</label>
+			 				<?php if(!empty($assignStatus)){?>
+			 				<textarea class="form-control" name="text" cols="4" rows="4">
+			 					<?= $assignStatus[0]['assign_reviews']; ?>
+			 				</textarea>
+			 			<?php } else { ?>
 			 				<textarea class="form-control" name="text" cols="4" rows="4">
 			 				</textarea>
+			 			<?php } ?>
 			 			</div>
 			 			<div class="form-group">
 			 				<label>Status</label>
-			 				<select name="select" class="form-control">
-			 					<option>Select Status</option>
-			 					<option value="Accepted">Accepted</option>
-			 					<option value="Rejected">Rejected</option>
-			 				</select>
+			 				<?php if(!empty($assignStatus)){?>
+			 					<select name="select" class="form-control">
+				 					<option value="<?php echo $assignStatus[0]['assign_sub_status'];?>"><?php echo $assignStatus[0]['assign_sub_status'];?></option>
+				 					<?php if($assignStatus[0]['assign_sub_status'] == 'Accepted'){?>
+				 						<option value="Rejected">Rejected</option>
+				 					<?php } else { ?>
+				 						<option value="Accepted">Accepted</option>
+				 					<?php }	?>
+				 				</select>
+			 				<?php } else { ?>
+				 				<select name="select" class="form-control">
+				 					<option>Select Status</option>
+				 					<option value="Accepted">Accepted</option>
+				 					<option value="Rejected">Rejected</option>
+				 				</select>
+			 				<?php } ?>
 			 			</div>
 			 			<button type="submit" name="submit" class="btn btn-success btn-xs pull-right">Send</button>
 			 		</form>

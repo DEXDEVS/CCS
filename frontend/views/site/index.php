@@ -14,7 +14,7 @@ $this->title = 'CCS';
         <h1>Welcome!</h1>
         <?php if (Yii::$app->user->isGuest) { ?>
             <p class="lead">You are few steps away from submitting your publication.</p>
-            <p><a class="btn btn-success" href="../user/register">Get started with CSS</a></p>
+            <p><a class="btn btn-success" href="./user/register">Get started with CSS</a></p>
         <?php } ?>
     </div>
 

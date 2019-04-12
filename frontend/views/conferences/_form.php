@@ -37,6 +37,14 @@ use dosamigos\datetimepicker\DateTimePicker;
     </div>
     <div class="row">
         <div class="col-md-6">
+            <?= $form->field($model, 'conf_domain')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'conf_scope')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
             <label>Start Date</label>
             <?= DateTimePicker::widget([
                 'model' => $model,
@@ -68,7 +76,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 
     <div class="row">
         <div class="col-md-6">
-            <label>Abstract DeadLine</label>
+            <label>Abstract Deadline</label>
             <?= DateTimePicker::widget([
                 'model' => $model,
                 'attribute' => 'conf_abstract_DL',
@@ -82,7 +90,7 @@ use dosamigos\datetimepicker\DateTimePicker;
             ]);?>
         </div>
         <div class="col-md-6">
-            <label>Poster DeadLine</label>
+            <label>Poster Deadline</label>
             <?= DateTimePicker::widget([
                 'model' => $model,
                 'attribute' => 'conf_poster_DL',
@@ -99,7 +107,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 
     <div class="row">
         <div class="col-md-6">            
-            <label>FullPaper DeadLine</label>
+            <label>FullPaper Deadline</label>
             <?= DateTimePicker::widget([
                 'model' => $model,
                 'attribute' => 'conf_fullpaper_DL',

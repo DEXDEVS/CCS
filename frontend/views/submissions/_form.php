@@ -136,7 +136,7 @@ use frontend\models\Conferences;
                         <?= $form->field($model, 'sub_file')->fileInput() ?>
                     </div>
                     <div class="col-md-8">
-                        <?= $form->field($model, 'sub_keywords')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'sub_keywords')->textInput(['maxlength' => true])->label('Keywords (Comma Separated)') ?>
                     </div>
                 </div>
                 <div class="row">

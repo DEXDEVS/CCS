@@ -16,6 +16,10 @@ return [
     // ],
     [
         'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'sub_type',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'assign_sub_id',
         'value'=>'assignSub.sub_title'
     ],
