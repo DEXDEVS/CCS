@@ -2,7 +2,7 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://www.ranafaraz.com/wp-content/uploads/2019/03/Webp.net-resizeimage.png" height="100px">
     </a>
-    <h1 align="center">Conference Submission Studio</h1>
+    <h1 align="center">CSS - Conference Submission Studio</h1>
     <br>
 </p>
 
